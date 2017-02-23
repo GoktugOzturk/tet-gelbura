@@ -1,0 +1,21 @@
+<head>
+    <title><?= view::get_title() ?></title>
+    <meta charset="UTF-8">
+    <meta name="web_author" content="Tekno E-Ticaret">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <?= view::get_header_tags() ?>
+    <link rel="shortcut icon" href="/logo/favicon.png" type="image/png"/>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearchdescription.xml" title="<?= app::getName() ?>"/>
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+    <?= view::load_styles('bootstrap') ?>
+    <?= view::load_styles('global') ?>
+    <?= view::load_styles() ?>
+    <?= view::load_scripts('jQuery') ?>
+    <?= view::load_inline_scripts() ?>
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+</head>

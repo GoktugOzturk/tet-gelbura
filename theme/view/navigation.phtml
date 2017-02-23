@@ -1,0 +1,65 @@
+<?
+/**
+ * @var category_model[] $catalogs
+ * @var category_model   $category
+ */
+?>
+<div id="navigation" class="visible-md visible-lg">
+    <div class="container">
+        <nav id="main-menu" class="">
+            <ul class="nav navbar-nav">
+                <li class="nav-logo"><a href="/" id="nav-logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>" src="<?= view::getLogo('fixedNav') ?>"
+                            srcset="<?= view::getLogo('fixedNav') ?> 1x, <?= view::getLogo('fixedNav2x') ?> 2x"/></a></li>
+                <? if (count($catalogs)) { ?>
+                    <? foreach ($catalogs as $catalog) { ?>
+                        <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
+                            <li class="dropdown-opener"><a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
+                                <div class="dropdown-menu">
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <? foreach ($childCategories[$catalog['id']] as $category) { ?>
+                                                <div class="col-md-4"><a href="<?= $category['link'] ?>"><?
+                                                        echo $category['name'];
+                                                        if (isset($childCategories[$category['id']]) && count($childCategories[$category['id']])) {
+                                                            $subCats = [];
+                                                            foreach ($childCategories[$category['id']] as $subCategory) {
+                                                                $subCats[] = $subCategory['name'];
+                                                                if (count($subCats) > 8) {
+                                                                    $subCats[] = '...';
+                                                                    break;
+                                                                }
+                                                            }
+                                                            echo '<span>' . implode(', ', $subCats) . '</span>';
+                                                        }
+                                                        ?></a>
+                                                </div>
+                                            <? } ?>
+                                        </div>
+                                    </div>
+                                    <ul class="col-md-3">
+                                        <li>
+                                            <a href="#"><img src="products/menu-pic.jpg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="products/menu-pic-2.jpg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="products/menu-pic-3.jpg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="products/menu-pic-4.jpg"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        <? } else { ?>
+                            <li>
+                                <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
+                            </li>
+                        <? } ?>
+                    <? } ?>
+                <? } ?>
+            </ul>
+        </nav>
+    </div>
+</div>

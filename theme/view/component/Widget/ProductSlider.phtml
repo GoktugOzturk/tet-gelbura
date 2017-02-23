@@ -1,0 +1,33 @@
+<?
+/**
+ * @var int             $id
+ * @var string          $title
+ * @var \product_item[] $products
+ */
+?>
+<div id="<?= $id ?>" class="block">
+    <h3 class="block-title"><?= $title ?></h3>
+    <ul class="items">
+        <? foreach ($products as $key => $product) { ?>
+        <li class="item">
+            <?= $product->generate() ?>
+        </li>
+        <? } ?>
+    </ul>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#<?=$id?> .items').owlCarousel({
+            responsiveClass: true,
+            nav: true,
+            responsive: {
+                0: {items: 1, nav: false},
+                481: {items: 3},
+                993: {items: 4}
+            },
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
+        });
+    });
+</script>

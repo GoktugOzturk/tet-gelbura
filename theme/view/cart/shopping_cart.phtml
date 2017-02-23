@@ -1,0 +1,286 @@
+<?
+/**
+ * @var \TeknoETicaret\Shopping\Cart\Cart $cart
+ * @var array                             $summaryDetails
+ * @var array                             $checkFreeShipping
+ * @var float                             $minInstallmentPrice
+ * @var bool                              $showUseShoppingCheck
+ */
+$memberShoppingCheck = $cart->getShoppingCheck();
+$coupon = $cart->getCoupon();
+?>
+<nav>
+    <ul class="checkout-bar nav">
+        <li class="col-md-3 col-xs-12 active">Alışveriş Sepeti</li>
+        <li class="col-md-3 col-xs-12">Teslimat ve Fatura</li>
+        <li class="col-md-3 col-xs-12">Ödeme</li>
+        <li class="col-md-3 col-xs-12">Sipariş Tamamlandı</li>
+    </ul>
+</nav>
+<div class="mb30">
+    <h1 class="page-title">ALIŞVERİŞ SEPETİNİZ</h1>
+    <div class="table-responsive">
+        <form id="cartUpdate" method="post" action="/cart/update">
+            <input type="hidden" name="form" value="cartUpdate"/>
+            <table class="table" id="cart-summary">
+                <thead>
+                <tr>
+                    <th class="cart-image col-md-1">Ürün</th>
+                    <th class="cart-description col-md-7">Açıklama</th>
+                    <th class="cart-quantity col-md-2 text-center">Adet</th>
+                    <th class="cart-unit col-md-2 text-right">Toplam Fiyatı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?
+                $packages = $cart->getPackages();
+                $totalEarnings = 0;
+                $divide = false;
+                foreach ($packages as $key => $package) {
+                    $packageProducts = $cart->getPackageProducts($package);
+                    foreach ($packageProducts as $product) {
+                        $obProduct = $product->getProduct();
+                        $inStock = intval($obProduct->warehouse_stock);
+                        $productTotalBasePrice = round($obProduct->getBasePrice() * $product->getQuantity(), 2);
+                        ?>
+                        <tr class="cart-item">
+                            <td class="cart-image">
+                                <a href="#">
+                                    <img width="98" src="<?= $obProduct->getPhoto('thumb') ?>">
+                                </a>
+                            </td>
+                            <td class="cart-description">
+                                <p class="product-name"><a href="<?= $obProduct->getUrl() ?>"><?= $obProduct->full_name ?></a></p>
+                                <? if ($obProduct->hasBadge(ob_product::BADGE_HOT_DEAL)) { ?>
+                                    <span class="label label-primary">FIRSAT ÜRÜNÜ</span>
+                                <? } ?>
+                                <? if ($inStock >= $product->getQuantity() && empty($obProduct->campaigns['price'])) { ?>
+                                    <? if ($inStock <= 5) { ?>
+                                        <span class="label label-warning">STOKTA SON <?= $inStock ?> ÜRÜN</span>
+                                    <? } else { ?>
+                                        <span class="label label-success">ÜRÜN STOKLARIMIZDA</span>
+                                    <? } ?>
+                                <? } else {
+                                    if ($obProduct->leadTime() == 1) { ?>
+                                        <span class="label label-success">24 SAATTE KARGODA!</span>
+                                    <? } else { ?>
+                                        <span class="label label-info"><?= $obProduct->leadTime() ?> İŞ GÜNÜNDE KARGODA</span>
+                                    <? }
+                                } ?>
+                                <? if (!empty($obProduct->campaigns['price'])) { ?>
+                                    <? foreach ($obProduct->campaigns['price'] as $campaignId => $price) {
+                                        $campaign = new campaign_model($campaignId); ?>
+                                        <div><strong class="text-muted"><?= $campaign->campaign_name ?></strong></div>
+                                    <? } ?>
+                                <? } ?>
+                                <? if (!empty($obProduct->campaigns['shipment'])) { ?>
+                                    <? foreach ($obProduct->campaigns['shipment'] as $campaignId => $price) {
+                                        $campaign = new campaign_model($campaignId); ?>
+                                        <div><strong class="text-muted"><?= $campaign->campaign_name ?></strong></div>
+                                    <? } ?>
+                                <? } ?>
+                            </td>
+                            <td class="cart-unit text-center">
+                                <div class="product-piece">
+                                    <a onclick="quantity('#qty-<?= $obProduct->product_id ?>','down')" href="javascript:;">-</a>
+                                    <div>
+                                        <input type="text" id="qty-<?= $obProduct->product_id ?>" data-ref="update<?= $obProduct->product_id ?>" title="Ürün Adedi"
+                                            name="quantity[<?= $obProduct->product_id ?>]" class="form-control input-xs quantity_input text-center" min="0"
+                                            max="<?= $obProduct->saleableProductCount() ?>" value="<?= $product->getQuantity() ?>" onblur="quantity($(this))">
+                                        <label for="productQuantity">ADET</label>
+                                    </div>
+                                    <a onclick="quantity('#qty-<?= $obProduct->product_id ?>','up')" href="javascript:;">+</a>
+                                </div>
+                                <a href="/cart/remove/<?= $obProduct->product_id ?>" onclick="return confirm('Bu ürünü sepetinizden çıkarmak istediğinize emin misiniz?');"
+                                    class="remove-icon"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                            <td class="cart-quantity text-right">
+                                <?= icms::format_money($product->getTotalPrice()) ?>
+                                <? if ($productTotalBasePrice > $product->getTotalPrice()) { ?>
+                                    <div class="old"><?= icms::format_money($productTotalBasePrice) ?></div>
+                                <? } ?>
+                            </td>
+                        </tr>
+                    <? } ?>
+                <? } ?>
+                </tbody>
+            </table>
+        </form>
+    </div><!-- #table-responsive# -->
+    <table class="col-md-12 table" id="cart-payment-info">
+        <tbody>
+        <? foreach ($summaryDetails AS $detail) { ?>
+            <tr class="cart-total">
+                <td class="col-md-8 hidden-xs"></td>
+                <td class="text-right col-md-2 col-xs-6"><?= $detail['title'] ?></td>
+                <td class="col-md-2 col-xs-6"><?= $detail['value'] ?></td>
+            </tr>
+        <? } ?>
+        <tr class="total-payment">
+            <td class="row-space col-md-8 hidden-xs"></td>
+            <td class="text-right col-md-2 col-xs-6">Ödenecek Tutar</td>
+            <td id="" class="col-md-2 col-xs-6"><?= icms::format_money(max($cart->getTotalPrice() - $cart->getMemberBalance(), 0)) ?></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="grey acc-btn" href="/">ALIŞVERİŞE DEVAM ET</a>
+    <a id="buyNowButton" class="pull-right acc-btn" href="<?= app::getUrl(ACTIVE_APP, "https") ?>/checkout">SATIN AL</a>
+    <a id="updateButton" class="pull-right acc-btn" href="javascript:" type="button" style="display:none;">SEPETİ GÜNCELLE</a>
+    <div class="clearfix"></div>
+</div><!-- #col# -->
+<div class="alert alert-info mb30">
+    <p>
+        <? if ($cart->getMaxEstimatedShippingDate()->format("Y-m-d") == date('Y-m-d')) { ?>
+            Siparişiniz <strong>BUGÜN</strong> kargoya verilecektir.
+        <? } elseif ($cart->getMaxEstimatedShippingDate()->format("Y-m-d") == date('Y-m-d', strtotime("+1 day"))) { ?>
+            Siparişiniz <strong>YARIN</strong> kargoya verilecektir.
+        <? } else {
+            if (\TeknoETicaret\Config\Settings::get('shipment.sameday')) { ?>
+                Sepetinizde <strong>Aynı Gün Kargo</strong> olmayan ürünler bulunuyor.<br>
+            <? }
+            if ($cart->getMinEstimatedShippingDate() == $cart->getMaxEstimatedShippingDate()) { ?>
+                Siparişiniz tahminen <strong><?= icms::format_date($cart->getMaxEstimatedShippingDate(), true) ?></strong> tarihinde kargoya verilecektir.
+            <? } else { ?>
+                Siparişiniz tahminen <strong><?= icms::format_date($cart->getMinEstimatedShippingDate(), true) ?>
+                    - <?= icms::format_date($cart->getMaxEstimatedShippingDate(), true) ?></strong> tarihleri arasında kargoya verilecektir.
+            <? }
+        } ?>
+    </p>
+</div>
+<div class="row">
+    <? if (!is_null($coupon)) { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-tag"></span><br>
+                <label for="coupon">Kullanılan kupon kodu</label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control " id="coupon" name="coupon" placeholder="<?= $coupon->coupon_code ?>">
+                    <button type="button" onclick="use_coupon();" class="btn btn-success btn-left cartMiniButton">VAZGEÇ</button>
+                </div>
+            </div>
+        </div>
+    <? } else { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-tag"></span><br>
+                <label for="coupon">Kupon kodunuz mu var?</label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control " id="coupon" name="coupon">
+                    <button type="button" onclick="use_coupon();" class="btn btn-success btn-left cartMiniButton">KULLAN</button>
+                </div>
+            </div>
+        </div>
+    <? } ?>
+    <? if (!is_null($memberShoppingCheck)) { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-bookmark"></span>
+                <label>Alışveriş çekinizi kullanıyorsunuz</label>
+                <div class="col-md-12">
+                    <a class="btn btn-success cartMiniButton" type="button" id="shoppingChecksUsed" onclick="useShoppingCheck(0)" href="javascript:">VAZGEÇ</a>
+                </div>
+            </div>
+        </div>
+    <? } elseif ($showUseShoppingCheck) { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-bookmark"></span>
+                <label>Alışveriş çekinizi kullanmak ister misiniz?</label>
+                <div class="col-md-12">
+                    <a class="btn btn-success cartMiniButton" type="button" id="shoppingChecks" href="javascript:">ÇEKLERİMİ GÖSTER</a>
+                </div>
+            </div>
+        </div>
+    <? } ?>
+    <? if ($minInstallmentPrice) { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-th"></span>
+                <label><strong><?= icms::format_money($minInstallmentPrice) ?></strong>'den başlayan taksit seçenekleri</label>
+                <div class="col-md-12">
+                    <a class="btn btn-success cartMiniButton" type="button" id="installmentOptions" href="javascript:">TAKSİT SEÇENEKLERİNİ GÖSTER</a>
+                </div>
+            </div>
+        </div>
+    <? } else { ?>
+        <div class="col-md-4">
+            <div class="block input-group">
+                <span class="glyphicon glyphicon-th"></span>
+                Bu siparişinizde taksit uygulanamamaktadır.
+            </div>
+        </div>
+    <? } ?>
+</div>
+<script type="text/javascript">
+    var qtyChanged = false;
+    $(function () {
+        $('.quantity_input').change(function () {
+            qtyChanged = false;
+            $("#buyNowButton").show();
+            $("#updateButton").hide();
+            $.each($('form#cartUpdate input.quantity_input'), function () {
+                if ($(this).val() !== $(this).attr("value")) {
+                    $("a." + $(this).data('ref')).show();
+                    $("#buyNowButton").hide();
+                    $("#updateButton").show();
+                    qtyChanged = true;
+                } else {
+                    $("a." + $(this).data('ref')).hide();
+                }
+            });
+            return true;
+        });
+        $("#updateButton").click(function () {
+            if (qtyChanged) {
+                $('form#cartUpdate').submit();
+            }
+        });
+        $("#shoppingChecks").on("click", function () {
+            $.get("/cart/getShoppingChecks", function (data) {
+                $('body').append(data);
+                $('.modal').modal('toggle')
+            });
+        });
+        $("#installmentOptions").on("click", function () {
+            $.get("/cart/installments", function (data) {
+                $('body').append(data);
+                $('.modal').modal('toggle')
+            });
+        });
+    });
+    function use_coupon() {
+        $.ajax({
+            type: "post",
+            url: "/cart/useCoupon",
+            data: {coupon: $('#coupon').val()},
+            success: function (data) {
+                if (!data) {
+                    return alert('Kupon kodu kullanılırken hata oluştu');
+                }
+                if (data.Status && data.Status == 'OK') {
+                    window.location = '/cart';
+                    return true;
+                }
+                alert('Hatalı bir kupon kodu girdiniz');
+            },
+            error: function () {
+                alert('Kupon kodu kullanılırken hata oluştu');
+            }
+        }).done(function () {
+            window.location = '/cart';
+        });
+    }
+    function useShoppingCheck(check) {
+        $.ajax({
+            type: "post",
+            url: "/cart/useShoppingCheck",
+            data: "shopping_check=" + check
+        }).done(function (data) {
+            if (data == "OK") {
+                window.location = '/cart';
+            } else {
+                alert(data);
+            }
+        });
+    }
+</script>

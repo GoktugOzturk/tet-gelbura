@@ -1,0 +1,128 @@
+<?php
+/**
+ * @var bool   $halfLogin
+ * @var string $accountMail
+ * @var string $redirectTo
+ */
+?>
+<div class="checkoutAccountBox">
+    <? $loginServices = view::getLoginServices($redirectTo, ' ile Bağlan'); ?>
+    <? if (count($loginServices)) { ?>
+        <div class="socialLogin mb30">
+            <p class="text-center">Sosyal medya hesabınızı kullanarak giriş yapabilirsiniz.</p>
+            <div class="text-center">
+                <?= implode('', $loginServices) ?>
+            </div>
+        </div>
+    <? } ?>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <? if (!$halfLogin) { ?>
+                <div class="loginOptions mb">
+                    <div class="radio"><label> <input type="radio" name="loginOptions" value="loginBox" checked> Giriş yap </label></div>
+                    <div class="radio"><label> <input type="radio" name="loginOptions" value="registerBox"> Üye ol </label></div>
+                    <div class="radio "><label> <input type="radio" name="loginOptions" value="guestAccountBox"> Üye olmadan devam et </label></div>
+                </div>
+            <? } ?>
+            <div id="loginBox" class="optionBox">
+                <form method="post" action="/ajax/signin" role="form" id="loginForm" class="form-horizontal">
+                    <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="LoginEmail">E-Posta Adresi:</label>
+                            <? if ($halfLogin) { ?>
+                                <div>
+                                    <input type="hidden" name="email" value="<?= $accountMail ?>"><?= $accountMail ?>
+                                    <div class="pull-right">( <a href="/member/logout">değiştir</a> )</div>
+                                </div>
+                            <? } else { ?>
+                                <input type="email" id="LoginEmail" class="form-control" name="email">
+                            <? } ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="LoginPassword">Parola:</label> <input type="password" id="LoginPassword" class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6 text-left">
+                            <button class="btn btn-primary noiseBg submitButton" type="submit">Giriş Yap</button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <a href="/member/forgot_password">Parolamı Unuttum</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <? if (!$halfLogin) { ?>
+                <div id="registerBox" class="optionBox">
+                    <form method="post" action="/ajax/signup" role="form" id="registerForm" class="form-horizontal" novalidate="novalidate">
+                        <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-6">
+                                <label for="SignupName">Adınız:</label> <input type="text" id="SignupName" class="form-control" name="firstname">
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <label for="SignupSurname">Soyadınız:</label> <input type="text" id="SignupSurname" class="form-control" name="surname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label for="SignupEmail">E-Posta Adresi:</label>
+                                <input type="email" id="SignupEmail" class="form-control" onkeypress="return disableSpaceKey(event);" name="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label for="SignupPassword">Parola:</label> <input type="password" id="SignupPassword" class="form-control" name="passwd">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <label> <input type="checkbox" checked="checked" name="subscription" id="subscription">Önemli kampanyalardan e-posta ile haberdar olmak
+                                        istiyorum.</label>
+                                </div>
+                                <div class="mt">
+                                    <button class="btn btn-primary noiseBg submitButton" type="submit">Hesabımı Oluştur</button>
+                                </div>
+                                <div class="mt">
+                                    Hesap oluşturarak <a target="_blank" href="/uyelik-sozlesmesi" class="b">üyelik sözleşmesini</a> okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="guestAccountBox" class="optionBox">
+                    <form method="post" action="/ajax/guestAccount" role="form" id="guestAccountForm" class="form-horizontal" novalidate="novalidate">
+                        <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label for="SignupEmail">E-Posta Adresi:</label>
+                                <input type="email" id="SignupEmail" class="form-control" onkeypress="return disableSpaceKey(event);" name="email">
+                            </div>
+                        </div>
+                        <div class="mt">
+                            Sipariş bilgileriniz bu adrese gönderilecektir.<br>İsterseniz alışverişinizin sonunda hesap oluşturabilirsiniz.
+                        </div>
+                        <div class="mt">
+                            <button class="btn btn-primary noiseBg submitButton" type="submit">Devam Et</button>
+                        </div>
+                    </form>
+                </div>
+            <? } ?>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("input[name=loginOptions]").on("change", function () {
+            var checked = $("input[name=loginOptions]:checked").val();
+            console.log(checked);
+            $(".optionBox:visible").hide();
+            $("#" + checked).show();
+        }).trigger("change");
+        $('.checkoutAccountBox form').on("submit", authFormSubmit);
+    });
+</script>

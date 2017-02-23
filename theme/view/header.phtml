@@ -1,0 +1,119 @@
+<?
+/**
+ * @var string           $themeDir
+ * @var category_model[] $catalogs
+ * @var category_model   $category
+ */
+?>
+<div id="header">
+    <div id="mobile-menu-buttons" class="visible-xs visible-sm">
+        <nav>
+            <ul class="nav nav-pills">
+                <li><a href="#main-menu"><span class="glyphicon glyphicon-menu-hamburger"></span>Menü</a></li>
+                <li><a href="#user-menu"><span class="glyphicon glyphicon-user"></span>Hesabım</a></li>
+                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span>Sepet</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="toolbar">
+        <div class="container">
+            <div class="row">
+                <div id="privileges-top" class="col-md-6 visible-md visible-lg">
+                    <div class="privilege-top"><span class="sprite sprite-toolbar guvenli"></span> %100 Güvenli Alışveriş</div>
+                    <div class="privilege-top"><span class="sprite sprite-toolbar orjinal"></span> %100 Orjinal Ürünler</div>
+                </div>
+                <div class="col-md-6 visible-md visible-lg">
+                    <nav id="user-menu">
+                        <ul class="nav navbar-nav">
+                            <? if (session::isMember()) { ?>
+                                <li><a role="button" href="/siparis-takip">SİPARİŞ TAKİP</a></li>
+                                <li><a role="button" href="/iletisim">İLETİŞİM</a></li>
+                                <li class="dropdown"><a role="button" class="dropdown-toggle" href="javascript:" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false"><span class="sprite sprite-toolbar user"></span> Hesabım [<?= mb_strtoupper(session::get("firstName")) ?>] <span
+                                            class="caret"></span> </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/account/details"><i class="glyphicon glyphicon-user"></i> Kişisel Bilgilerim</a></li>
+                                        <li><a href="/account/addresses"><i class="glyphicon glyphicon-list-alt"></i> Adreslerim</a></li>
+                                        <li><a href="/account/shopping_checks"><i class="glyphicon glyphicon-tag"></i> Alışveriş Çeklerim</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/siparis-takip"><i class="glyphicon glyphicon-ok"></i> Siparişlerim</a></li>
+                                        <li><a href="/order/defectreturn"><i class="glyphicon glyphicon-refresh"></i> Arıza/İade Bildirimi</a></li>
+                                        <li><a href="/support/tickets"><i class="glyphicon glyphicon-comment"></i> Destek Taleplerim</a></li>
+                                        <li><a href="/support/request"><i class="glyphicon glyphicon-plus-sign"></i> Yeni Talep Oluştur</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/member/logout"><i class="glyphicon glyphicon-send"></i> Çıkış Yap</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <? } else { ?>
+                                <li><a role="button" class="login-required" href="/siparis-takip">SİPARİŞ TAKİP</a></li>
+                                <li><a role="button" href="/iletisim">İLETİŞİM</a></li>
+                                <li><a role="button" class="login-required" href="javascript:"><span class="sprite sprite-toolbar user"></span> GİRİŞ YAP</a></li>
+                                <li><a role="button" class="signup-required" href="javascript:">ÜYE OL</a></li>
+                            <? } ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-bg">
+        <div id="header-glob" class="container">
+            <div class="row">
+                <div id="logo-wrapper" class="col-md-2">
+                    <a href="/" id="logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>" src="<?= view::getLogo('logo') ?>"
+                            srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
+                </div>
+                <div class="col-md-8">
+                    <form id="search" action="/ara">
+                        <div id="search" class="input-group input-group-lg">
+                            <?= menu::generateSearchCategoryMenu() ?>
+                            <input class="form-control" aria-label="..." placeholder="Aradığınız Herşey Gelbura’da" type="text">
+                            <span class="input-group-btn">
+                                <button id="search-button" class="btn btn-default" type="button" onclick="$('form#search').submit();">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <input type="hidden" id="search-category" name="categoryId" value="0">
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#search').submit(function () {
+                                    var query = $('#searchQuery').val();
+                                    if (query.length < 2) {
+                                        alert('Aranacak kelimeyi yazın.');
+                                        return false;
+                                    } else {
+                                        var $searchCategory = $('#search-category');
+                                        var categoryId = $searchCategory.val();
+                                        if (categoryId < 1) {
+                                            $searchCategory.attr('disabled', 'disabled');
+                                        } else {
+                                            $searchCategory.removeAttr('disabled');
+                                        }
+                                        return true;
+                                    }
+                                });
+                                var selectedCategoryId = getParameterByName('categoryId') || 0;
+                                var $searchBox = $("#catSelectBox");
+                                $searchBox.find('.dropdown-menu a').click(function () {
+                                    $('#search-category').val($(this).data('cat'));
+                                    $searchBox.find('#selectedCategoryName').html($(this).html());
+                                }).filter("[data-cat=" + selectedCategoryId + "]").click();
+                            });
+                        </script>
+                    </form>
+                </div>
+                <div class="col-md-2 hidden-xs hidden-sm">
+                    <a id="cart" class="btn btn-primary btn-lg" href="/cart" role="button">
+                        <span class="cart-text">SEPETİM</span>
+                        <span class="sprite shopping"></span>
+                        <div id="product-number"><?= session::getCartProductCount() ?></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <?= menu::generateSiteHeaderMenu() ?>
+    </div>
+</div>
+<div id="menu-hover"></div>

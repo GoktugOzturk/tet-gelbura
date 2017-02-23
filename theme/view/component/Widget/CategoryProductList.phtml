@@ -1,0 +1,44 @@
+<?
+/**
+ * @var int             $id
+ * @var string          $title
+ * @var \product_item[] $products
+ * @var ob_category     $category
+ */
+?>
+<div class="row">
+    <div class="col-md-3">
+        <div class="category-image-wrapper">
+            <div class="category-image">
+                <h3><?= $title ?></h3>
+                <div class="image-container"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <ul class="nav nav-tabs tab-image-block-nav">
+            <li class="active col-md-3 col-xs-12">
+                <a>Öne Çıkanlar</a>
+            </li>
+            <li class="col-md-3 col-xs-12">
+                <a href="#indirimli-urunler">İndirimli Ürünler <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            </li>
+            <li class="col-md-3 col-xs-12">
+                <a href="#cok-satanlar">Çok Satanlar <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            </li>
+            <li class="col-md-3 col-xs-12">
+                <a href="#ayni-gun-kargo">Aynı Gün Kargo <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            </li>
+        </ul>
+        <div class="items-wrapper image-block">
+            <ul class="items">
+                <? foreach ($products as $key => $product) { ?>
+                    <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <?= $product->generate() ?>
+                    </li>
+                <? } ?>
+            </ul>
+        </div>
+    </div>
+</div>

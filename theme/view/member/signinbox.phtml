@@ -1,0 +1,48 @@
+<?
+/**
+ * @var string $redirectTo
+ * @var string $b64
+ */
+?>
+<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="signinLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="signinLabel">Giriş Yap</h4>
+            </div>
+            <div class="modal-body">
+                <? $loginServices = view::getLoginServices($redirectTo); ?>
+                <? if (count($loginServices)) { ?>
+                    <div class="socialLogin mb30 text-center">
+                        <p>Sosyal medya hesabınızı kullanarak <?= icms::site_com("a") ?> kolayca giriş yapabilirsiniz.</p>
+                        <div>
+                            <?= implode('', $loginServices) ?>
+                        </div>
+                    </div>
+                <? } ?>
+                <div class="text-center">
+                    <p class="text-center">E-Posta ve Parolanızı kullanarak giriş yapabilirsiniz.</p>
+                    <form class="form-horizontal" id="login" role="form" action="/ajax/signin" method="post">
+                        <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-12 mb15">
+                                <label for="LoginEmail">E-Posta Adresiniz:</label> <input type="email" name="email" onkeypress="return disableSpaceKey(event);" class="form-control"
+                                    id="LoginEmail">
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-12 mb15">
+                                <label for="LoginPassword">Parolanız:</label> <input type="password" name="password" class="form-control" id="LoginPassword">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-primary submitButton">Giriş Yap</button>
+                                <a class="btn btn-default" href="/member/forgot_password">Parolamı Unuttum</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+{
+  "theme_tag": "pinkmore",
+  "theme_name": "Pink & More",
+  "theme_version": "1.0.0",
+  "compatible_with": "1.0.0",
+  "config": {
+    "skeletonView": {
+      "default": "global",
+      "checkout": "checkout"
+    },
+    "advertisementZones": {
+      "HomePageSlider": {
+        "description": "Anasayfa Kayan Slider",
+        "group": "Home",
+        "type": "Banner",
+        "width": 1150,
+        "limit": 10,
+        "sort_by": "Order"
+      },
+      "HomePageSquare": {
+        "description": "Anasayfada Slider altında görünen kare bannerlar",
+        "group": "Home",
+        "type": "Banner",
+        "width": 370,
+        "height": 370,
+        "limit": 2,
+        "sort_by": "Order"
+      },
+      "HomePageRectangle": {
+        "description": "Anasayfada Slider altındaki dikdörtgen bannerlar",
+        "group": "Home",
+        "type": "Banner",
+        "width": 370,
+        "height": 175,
+        "limit": 2,
+        "sort_by": "Random"
+      },
+      "HomePageBottom": {
+        "description": "Anasayfada alt tarafta görünen bannerlar",
+        "group": "Home",
+        "type": "Banner",
+        "width": 370,
+        "height": 265,
+        "limit": 3,
+        "sort_by": "Random"
+      }
+    },
+    "blockZones": {
+      "footer": {
+        "page": "All",
+        "title": "Footer Alanı",
+        "description": "Bu alan tüm sayfaların alt kısmında bulunur"
+      },
+      "homePage": {
+        "page": "Home",
+        "title": "Ana Sayfa",
+        "description": "Bu alan sitenin anasayfasında gösterilecek öğelerin görünümü düzenler"
+      },
+      "productPhotoUnder": {
+        "page": "Product",
+        "title": "Ürün Detayı - Resim altı",
+        "description": "Ürün detayında resim alanının altında bulunur"
+      },
+      "productUnder": {
+        "page": "Product",
+        "title": "Ürün Detayı - Alt Alan",
+        "description": "Ürün detayında alt alan"
+      }
+    },
+    "productPhoto": {
+      "ratio": 1.2,
+      "width": {
+        "thumb": 66,
+        "widget": 165,
+        "catalog": 269,
+        "normal": 564,
+        "mail": 300
+      }
+    }
+  }
+}

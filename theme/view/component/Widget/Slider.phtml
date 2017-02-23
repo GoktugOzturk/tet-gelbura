@@ -1,0 +1,37 @@
+<?
+/**
+ * @var \advertisement_zone_model $zone
+ * @var \advertisement_model[]    $banners
+ * @var bool                      $lazyLoad
+ * @var string                    $id
+ * @var array                     $data
+ */
+?>
+<div id="<?= $id ?>" class="slider">
+    <div class="owl-carousel owl-theme">
+        <? foreach ($banners as $key => $banner) { ?>
+            <div class="item <?= ($key == 0 ? 'active' : '') ?>">
+                <?= image::getBannerHtml($banner) ?>
+            </div>
+        <? } ?>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#<?= $id ?> .owl-carousel').owlCarousel({
+            loop: <?=$data['owl-loop'] ?>,
+            dots: <?=$data['owl-dots'] ?>,
+            nav: <?=$data['owl-nav'] ?>,
+            navText: <?=(!empty($data['owl-navText']) ? $data['owl-navText'] :
+            '[\'<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\', \'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\']') ?>,
+            autoplay: <?=(count($banners) > 1 ? $data['owl-autoplay'] : 'false') ?>,
+            autoplayTimeout: <?=$data['owl-autoplayTimeout'] ?>,
+            autoplayHoverPause: <?=$data['owl-autoplayHoverPause'] ?>, // Stops autoplay
+            items: 1,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            <? if ($lazyLoad) { ?>lazyLoad: true,<? } ?>
+            singleItem: true
+        });
+    });
+</script>

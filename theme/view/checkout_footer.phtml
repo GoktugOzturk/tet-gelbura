@@ -1,0 +1,20 @@
+<footer class="container-fluid">
+    <div class="payment-options-wrapper row">
+        <div class="col-lg-12 payment-options">
+        </div>
+    </div>
+    <div class="copyright row">
+        <div class="col-md-12">
+            <p><?= \TeknoETicaret\Config\Settings::get('site.name') ?> &copy; <?= date('Y') ?> - Tüm hakları saklıdır. </p>
+        </div>
+    </div><!-- #copyright# -->
+    <div class="col-md-12" id="teknomavi">
+        <p>Bu site <a href="https://www.teknoeticaret.com" target="_blank">Tekno E-Ticaret</a> altyapısı ile hizmet veriyor.</p>
+    </div>
+</footer>
+<?= view::load_scripts() ?>
+<?
+if (!defined("DISABLE_TRACKERS")) {
+    echo view::load("tracker/global_tracker");
+}
+?>

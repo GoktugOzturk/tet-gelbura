@@ -1,0 +1,20 @@
+<?
+/**
+ * @var array $menuItems
+ * @var string $active
+ */
+?>
+<? foreach ($menuItems as $item) { ?>
+    <nav>
+        <h3><?= $item['name'] ?></h3>
+        <ul>
+            <? foreach ($item['sub'] as $url => $title) { ?>
+                <? if ($title == 'divider') { ?>
+                    <li class="divider"></li>
+                <? } else { ?>
+                    <li><a href="<?= $url ?>" <?= ($url == $active) ? 'class="active"' : '' ?>><?= $title ?></a></li>
+                <? } ?>
+            <? } ?>
+        </ul>
+    </nav>
+<? } ?>

@@ -1,0 +1,34 @@
+<?
+/**
+ * @var string $addressSelection
+ * @var array  $deliveryOptionList
+ */
+?>
+<nav>
+    <ul class="checkout-bar nav">
+        <li class="col-md-3 col-xs-12 visited"><a href="<?= app::getUrl(ACTIVE_APP, app::SCHEME_HTTP) ?>/cart">Alışveriş Sepeti</a></li>
+        <li class="col-md-3 col-xs-12 active">Teslimat ve Fatura</li>
+        <li class="col-md-3 col-xs-12">Ödeme</li>
+        <li class="col-md-3 col-xs-12">Sipariş Tamamlandı</li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-8 col-xs-12">
+        <?= $addressSelection ?>
+        <? if (count($deliveryOptionList) > 1) { ?>
+            <div class="checkoutContent mb">
+                <h2>Kargo Firması</h2>
+                <div class="mt">Siparişiniz için kullanmak istediğiniz teslimat şeklini seçiniz.</div>
+                <br>
+                <ul id="deliveryOptions" class="row">
+                    <? foreach ($deliveryOptionList as $deliveryOptionId => $deliveryOptionName) { ?>
+                        <li class="col-xs-6 col-sm-3" style="list-style-type: none;">
+                            <button class="btn btn-default" data-cargo="<?= $deliveryOptionId ?>"><?= $deliveryOptionName ?></button>
+                        </li>
+                    <? } ?>
+                </ul>
+            </div>
+        <? } ?>
+    </div>
+    <div class="col-md-4 col-xs-12" id="cartSummary"></div>
+</div>
