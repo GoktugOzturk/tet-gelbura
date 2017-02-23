@@ -1,81 +1,98 @@
 {
-  "theme_tag": "pinkmore",
-  "theme_name": "Pink & More",
-  "theme_version": "1.0.0",
-  "compatible_with": "1.0.0",
-  "config": {
-    "skeletonView": {
-      "default": "global",
-      "checkout": "checkout"
+  "skeletonView": {
+    "default": "global",
+    "home": "home",
+    "cart": "checkout",
+    "checkout": "checkout"
+  },
+  "advertisementZones": {
+    "HomePageSlider": {
+      "description": "Anasayfa Kayan Slider",
+      "group": "Home",
+      "type": "Banner",
+      "width": 1140,
+      "limit": 10,
+      "sort_by": "Order"
     },
-    "advertisementZones": {
-      "HomePageSlider": {
-        "description": "Anasayfa Kayan Slider",
-        "group": "Home",
-        "type": "Banner",
-        "width": 1150,
-        "limit": 10,
-        "sort_by": "Order"
-      },
-      "HomePageSquare": {
-        "description": "Anasayfada Slider altında görünen kare bannerlar",
-        "group": "Home",
-        "type": "Banner",
-        "width": 370,
-        "height": 370,
-        "limit": 2,
-        "sort_by": "Order"
-      },
-      "HomePageRectangle": {
-        "description": "Anasayfada Slider altındaki dikdörtgen bannerlar",
-        "group": "Home",
-        "type": "Banner",
-        "width": 370,
-        "height": 175,
-        "limit": 2,
-        "sort_by": "Random"
-      },
-      "HomePageBottom": {
-        "description": "Anasayfada alt tarafta görünen bannerlar",
-        "group": "Home",
-        "type": "Banner",
-        "width": 370,
-        "height": 265,
-        "limit": 3,
-        "sort_by": "Random"
-      }
+    "HomePageRightRectangle": {
+      "description": "Anasayfada sağdaki dikdörtgen bannerlar",
+      "group": "Home",
+      "type": "Banner",
+      "width": 262,
+      "limit": 5,
+      "sort_by": "Random"
     },
-    "blockZones": {
-      "footer": {
-        "page": "All",
-        "title": "Footer Alanı",
-        "description": "Bu alan tüm sayfaların alt kısmında bulunur"
-      },
-      "homePage": {
-        "page": "Home",
-        "title": "Ana Sayfa",
-        "description": "Bu alan sitenin anasayfasında gösterilecek öğelerin görünümü düzenler"
-      },
-      "productPhotoUnder": {
-        "page": "Product",
-        "title": "Ürün Detayı - Resim altı",
-        "description": "Ürün detayında resim alanının altında bulunur"
-      },
-      "productUnder": {
-        "page": "Product",
-        "title": "Ürün Detayı - Alt Alan",
-        "description": "Ürün detayında alt alan"
-      }
+    "CategoryTop": {
+      "description": "Kategori sayfalarında menüden sonra görünen banner",
+      "group": "Category",
+      "type": "Banner",
+      "width": 1140,
+      "limit": 3,
+      "sort_by": "Order"
+    }
+  },
+  "blockZones": {
+    "footer": {
+      "page": "All",
+      "title": "Footer Alanı",
+      "description": "Bu alan site genelinde tüm sayfaların altında görünür"
     },
-    "productPhoto": {
-      "ratio": 1.2,
-      "width": {
-        "thumb": 66,
-        "widget": 165,
-        "catalog": 269,
-        "normal": 564,
-        "mail": 300
-      }
+    "homePage": {
+      "page": "Home",
+      "title": "Ana Sayfa",
+      "description": "Bu alan anasayfa tasarımını özelleştirmenizi sağlar"
+    },
+    "productInfo": {
+      "page": "Product",
+      "title": "Ürün Detay Sayfası Ürün Bilgisinin Altı",
+      "description": "Ürün detay sayfalarında fotoğrafın yanında, ürünü sepete ekle bölümünün hemen altında görünür"
+    },
+    "productUnder": {
+      "page": "Product",
+      "title": "Ürün Detay Sayfası Footer Öncesi",
+      "description": "Ürün detay sayfalarında ürün açıklamalarının altındaki alanda görünecek öğelerin özelleştirilmesini sağlar"
+    },
+    "categoryTop": {
+      "page": "Category",
+      "title": "Kategori Sayfası Navigasyon Altı",
+      "description": "Kategori sayfalarında navigasyon altına eklenecek banner, açıklama gibi öğelerin özelleştirilmesini sağlar"
+    },
+    "categoryUnder": {
+      "page": "Category",
+      "title": "Kategori Sayfası Ürün Listesinin Altı",
+      "description": "Kategori sayfalarında ilgili kategorideki ürünlerden sonra gösterilir"
+    }
+  },
+  "productPhoto": {
+    "ratio": 1,
+    "width": {
+      "thumb": 60,
+      "widget": 198,
+      "catalog": 182,
+      "normal": 432,
+      "mail": 300
+    }
+  },
+  "logos": {
+    "logo": {
+      "name": "Genel Site Logosu",
+      "width": 186,
+      "height": 58
+    },
+    "logo2x": {
+      "name": "Genel Site Logosu (2x)",
+      "width": 372,
+      "height": 116
+    },
+    "fixedNav": {
+      "name": "Sabit Navigasyonda Görünen Logo",
+      "width": 112,
+      "height": 35
+    },
+    "fixedNav2x": {
+      "name": "Sabit Navigasyonda Görünen Logo (2x)",
+      "width": 224,
+      "height": 70
     }
   }
 }
