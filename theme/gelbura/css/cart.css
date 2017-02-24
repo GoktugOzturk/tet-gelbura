@@ -471,6 +471,20 @@ ul.checkout-bar a {
     .hideAgreementsOnMobile {
         display: none;
     }
+
+    .checkout-wrap {
+        margin: 20px auto;
+        position: relative;
+        height: auto;
+    }
+
+    ul.checkout-bar {
+        margin: 0;
+    }
+
+    ul.checkout-bar li {
+        padding: 12px 20px 14px 65px;
+    }
 }
 
 @media all and (min-width: 800px) {
