@@ -228,7 +228,16 @@ a:hover {
 
 .navbar-fixed-top#navigation li a {
     font-size: 12px;
-    padding: 15px 10px;
+}
+
+#navigation li > a:focus {
+    background: none;
+    text-decoration: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none !important;
 }
 
 /* navigation */
@@ -411,7 +420,7 @@ a:hover {
     font-size: 14px;
 }
 
-.items-wrapper .item .star img {
+.items-wrapper .item .stars img {
     width: auto;
     display: inline-block;
 }
@@ -872,6 +881,61 @@ a:hover {
     font-weight: bold;
     font-size: 13px;
     color: #777;
+}
+
+.default-page,
+.sidebar {
+    margin-top: 15px;
+}
+
+.sidebar h3 {
+    margin: 0 0 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    margin: 0;
+    padding: 15px;
+    background: #FFF;
+    border-radius: 7px;
+}
+
+.sidebar ul li {
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.sidebar ul li:first-child {
+    margin-top: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 0 10px 10px;
+    color: #000000;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.sidebar ul li a:hover {
+    background: #EE6A05;
+    color: #FFF;
+    padding: 10px 0 10px 10px;
+}
+
+.default-page .section {
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.page-title {
+    margin: 0;
+    border-bottom: 1px solid #D9D9D9;
 }
 
 @media (min-width: 550px) {

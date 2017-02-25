@@ -9,12 +9,12 @@
     <div class="container">
         <? if (view::has_blocks()) { ?>
             <div class="row mb30">
-                <article class="col-xs-12 col-sm-8 col-md-9 pull-right">
+                <article class="default-page col-xs-12 col-sm-8 col-md-9 pull-right">
                     <section>
                         <? view::show_contents() ?>
                     </section>
                 </article>
-                <? view::show_blocks("col-xs-12 col-sm-4 col-md-3 pull-left") ?>
+                <? view::show_blocks("sidebar col-xs-12 col-sm-4 col-md-3 pull-left") ?>
             </div>
         <? } else { ?>
             <? view::show_contents() ?>
