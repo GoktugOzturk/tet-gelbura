@@ -659,6 +659,11 @@ a {
     margin-left: 10px;
 }
 
+.ptb15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 #menu-hover {
     z-index: -1;
     position: absolute;

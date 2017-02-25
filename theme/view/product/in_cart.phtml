@@ -4,22 +4,28 @@
  */
 ?>
 <div class="contentPage">
-    <h2>Ürün Sepetinize Eklendi</h2>
+    <h2 class="page-title">Ürün Sepetinize Eklendi</h2>
     <div class="row mb">
         <div class="col-md-8 col-xs-12">
             <? foreach ($addedToCart as $key => $product) { ?>
-                <div class="row">
-                    <div class="col-xs-3 addedImage"><a href="<?= $product['link'] ?>"><?= $product['image'] ?></a></div>
-                    <div class="col-xs-9 addedProduct"><a href="<?= $product['link'] ?>"><?= $product['name'] ?></a><br> <span><?= icms::format_money($product['price']) ?></span>
+                <div class="block ptb15">
+                    <div class="col-xs-3 addedImage"><a href="<?= $product['link'] ?>"><?= $product['image'] ?></a>
+                    </div>
+                    <div class="col-xs-9 addedProduct"><a href="<?= $product['link'] ?>"><?= $product['name'] ?></a><br>
+                        <span><?= icms::format_money($product['price']) ?></span>
                     </div>
                 </div>
             <? } ?>
         </div>
         <div class="col-md-4 col-xs-12 addedDetails">
-            Sepet Toplamınız : <strong><?= icms::format_money(session::getCartTotalPrice()) ?></strong> <br>
-            <span>Sepetinizde toplam <strong><?= session::getCartProductCount() ?></strong> ürün var.</span>
-            <div class="addedButtons"><a class="btn btn-default btn-sm" href="/">Alışverişe Devam Et</a>
-                <a class="btn btn-primary btn-sm" href="/cart">Sepete Git <i class="glyphicon glyphicon-chevron-right"></i></a>
+            <div class="block ptb15">
+                Sepet Toplamınız : <strong><?= icms::format_money(session::getCartTotalPrice()) ?></strong> <br>
+                <span>Sepetinizde toplam <strong><?= session::getCartProductCount() ?></strong> ürün var.</span>
+                <div class="addedButtons mt15"><a class="btn btn-default btn-orange btn-sm" href="/">Alışverişe Devam
+                        Et</a>
+                    <a class="btn btn-primary btn-sm" href="/cart">Sepete Git <i
+                            class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
             </div>
         </div>
     </div>
