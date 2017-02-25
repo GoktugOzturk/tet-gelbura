@@ -5,10 +5,30 @@
 }
 
 header {
-    border-bottom: 4px solid #09A6D7;
+    border-bottom: 4px solid #ee6a05;
     margin-bottom: 30px;
     padding: 10px 0;
     background: #FFF;
+}
+
+#buyNowButton {
+    background: #ee6a05;
+    padding: 15px;
+    color: #FFF;
+    border-radius: 4px;
+    margin: 10px 0 0;
+}
+
+.grey.acc-btn {
+    background: #ccc;
+    padding: 15px;
+    color: #000;
+    border-radius: 4px;
+    margin: 10px 0 0;
+}
+
+#checkoutLogo img {
+    margin: 15px 0;
 }
 
 .page-title {
@@ -37,7 +57,7 @@ header {
 
 .checkout-bar li.active {
     color: #FFF;
-    background: #1AABE3 !important;
+    background: #ee6a05 !important;
 }
 
 .checkout-bar li a {
@@ -201,7 +221,8 @@ header {
 #paymentOptions {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-top: 0;    padding: 10px 30px 30px;
+    border-top: 0;
+    padding: 10px 30px 30px;
 
 }
 
