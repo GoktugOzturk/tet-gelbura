@@ -9,9 +9,9 @@
     <h3 class="block-title"><?= $title ?></h3>
     <ul class="items">
         <? foreach ($products as $key => $product) { ?>
-        <li class="item">
-            <?= $product->generate() ?>
-        </li>
+            <li class="item">
+                <?= $product->generate() ?>
+            </li>
         <? } ?>
     </ul>
 </div>
@@ -23,10 +23,13 @@
             responsive: {
                 0: {items: 1, nav: false},
                 481: {items: 3},
-                993: {items: 4}
+                800: {items: 4},
+                1000: {items: 5}
             },
+            responsiveBaseElement: "#<?= $id ?>",
             slideSpeed: 300,
             paginationSpeed: 400,
+            margin: 30,
             navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
         });
     });
