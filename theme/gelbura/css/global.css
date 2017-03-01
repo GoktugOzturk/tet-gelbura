@@ -637,9 +637,18 @@ a {
     margin-left: 5px;
 }
 
+.buttonCheckout,
 .btn-orange {
     background-color: #ee6a05 !important;
     border-color: #ee6a05 !important;
+    color: #FFF !important;
+}
+
+.buttonCheckout,
+.btn-orange:hover {
+    background-color: #d55d01 !important;
+    border-color: #ee6a05 !important;
+    color: #FFF !important;
 }
 
 /* #product-list# */
