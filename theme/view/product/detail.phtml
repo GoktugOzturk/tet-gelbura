@@ -87,14 +87,16 @@
             <? if ($obProduct->is_saleable || \TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
                 <div class="price-wrapper">
                     <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                        <div class="discount-percent">
-                            <span class="discount-icon">%</span><?= $obProduct->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
+                        <div class="pull-left">
+                            <span class="sprite product-discount">%<?= $obProduct->getDiscountPercent() ?></span>
                         </div>
                     <? } ?>
-                    <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                        <div class="old-price pull-right"><?= icms::format_money($obProduct->getBasePrice(), null) ?> <span>TL</span></div>
-                    <? } ?>
-                    <div class="product-price pull-right"><?= icms::format_money($obProduct->getSalePrice(), null) ?><span>TL</span></div>
+                    <div class="product-price pull-right">
+                        <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                            <div class="item-price-old"><?= icms::format_money($obProduct->getBasePrice(), null) ?> TL</div>
+                        <? } ?>
+                        <?= icms::format_money($obProduct->getSalePrice(), null) ?><span>TL</span>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
             <? } ?>
@@ -104,15 +106,9 @@
                         <div class="product-info-col badge free-cargo ml10">
                             <span class="sprite"></span>ÜCRETSİZ KARGO
                         </div>
-                    <? } ?>
-                    <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
-                        <div class="product-info-col badge fast-cargo ml10">
-                            <span class="sprite"></span><?= ($obProduct->warehouse_stock <= 5 ? 'SON ' . $obProduct->warehouse_stock . ' ÜRÜN' : 'HIZLI KARGO') ?>
-                        </div>
-                    <? } ?>
-                    <? if ($obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
-                        <div class="badge new-product">
-                            <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
+                    <? } else { ?>
+                        <div class="badge cargo ml10">
+                            <span class="sprite"></span>Kargo Ücreti <?= icms::format_money($obProduct->getShippingCost()) ?>
                         </div>
                     <? } ?>
                     <div class="product-info-right">
@@ -209,10 +205,26 @@
                     </div>
                 </div>
             <? } ?>
-            <? if (!$obProduct->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+            <? if ($obProduct->hasBadge(ob_product::BADGE_NEW) || $obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
                 <div class="product-row">
-                    <div class="shipping-cost">
-                        <span>KARGO ÜCRETİ:</span> <?= icms::format_money($obProduct->getShippingCost()) ?>
+                    <div class="product-mid-badges">
+                        <? if ($obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
+                            <div class="pull-left ml10">
+                                <span class="sprite sprite-product chance"></span> Yeni Ürün
+                            </div>
+                        <? } ?>
+                        <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                            <div class="pull-left ml10">
+                                <span class="sprite sprite-product fast-cargo"></span>
+                                <?= ($obProduct->warehouse_stock <= 5 ? 'Son ' . $obProduct->warehouse_stock . ' Ürün' : 'Hızlı Kargo') ?>
+                            </div>
+                        <? } ?>
+                        <? if (false) { ?>
+                            <div class="pull-left ml10">
+                                <span class="sprite sprite-product outlet"></span> Outlet Ürün
+                            </div>
+                        <? } ?>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             <? } ?>
@@ -234,7 +246,7 @@
                         onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
                         + Sepete Ekle</a>
                     <div class="clearfix"></div>
-                    <p class="cargo-info">Bu ürün tahmini 6 iş gününde kargoya teslim edilir.</p>
+                    <p class="cargo-info">Bu ürün tahmini <?= $obProduct->leadTime() ?> iş gününde kargoya teslim edilir.</p>
                     <div class="clearfix"></div>
                 <? } else { ?>
                     <div class="stockAlertBox">
