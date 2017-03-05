@@ -38,6 +38,24 @@
     text-align: right;
 }
 
+.price-wrapper .discount-percent {
+    font-size: 40px;
+    line-height: 54px;
+    text-align: center;
+    background-position: -362px -135px;
+    width: 160px;
+    height: 72px;
+    color: #000;
+}
+
+.price-wrapper .discount-percent .discount-text {
+    display: block;
+    font-size: 16px;
+    line-height: 6px;
+    letter-spacing: 3px;
+    font-weight: 900;
+}
+
 .product-price {
     font-size: 37px;
     font-weight: bolder;
