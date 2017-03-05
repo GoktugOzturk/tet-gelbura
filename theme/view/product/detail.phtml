@@ -87,8 +87,8 @@
             <? if ($obProduct->is_saleable || \TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
                 <div class="price-wrapper">
                     <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                        <div class="pull-left">
-                            <span class="sprite product-discount">%<?= $obProduct->getDiscountPercent() ?></span>
+                        <div class="discount-percent">
+                            <span class="discount-icon">%</span><?= $obProduct->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
                         </div>
                     <? } ?>
                     <div class="product-price pull-right">
