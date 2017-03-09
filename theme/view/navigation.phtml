@@ -13,7 +13,7 @@
                 <? if (count($catalogs)) { ?>
                     <? foreach ($catalogs as $catalog) { ?>
                         <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
-                            <li class="dropdown-opener"><a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
+                            <li class="dropdown-opener"><a href="<?= $catalog['link'] ?>"><span><?= $catalog['name'] ?></span></a>
                                 <div class="dropdown-menu">
                                     <div class="col-md-9">
                                         <div class="row">

@@ -128,16 +128,26 @@ a:hover {
 }
 
 #navigation li > a {
+    display: block;
+    height: 100%;
     font-size: 12px;
+    line-height: 16px;
     font-weight: bold;
     text-transform: uppercase;
     color: #FFF;
-    padding: 15px 13px;
+    padding: 10px 13px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+}
+
+#navigation li > a > span {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #navigation li:hover > a,
@@ -157,6 +167,7 @@ a:hover {
 }
 
 #navigation .dropdown-menu {
+    right: 0;
     border: 0;
     margin: 0;
     padding: 20px 0;
@@ -188,6 +199,7 @@ a:hover {
 }
 
 #navigation ul > li {
+    height: 100%;
     position: static;
     display: table-cell;
     width: 1%;
