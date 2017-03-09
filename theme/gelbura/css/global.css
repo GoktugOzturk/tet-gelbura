@@ -407,9 +407,10 @@ a {
 
 .items-wrapper .item .name {
     color: #616161;
-    line-height: 18px;
+    line-height: 20px;
     margin-bottom: 0;
     height: 40px;
+    overflow: hidden;
 }
 
 .items-wrapper .item .image {
