@@ -15,8 +15,7 @@
       "description": "Navigasyon menüsündeki Katalog alt menülerinde görünen reklam alanları",
       "group": "Catalog",
       "type": "Banner",
-      "width": 125,
-      "height": 125,
+      "width": 255,
       "limit": 12,
       "sort_by": "Order",
 	  "global": 1
