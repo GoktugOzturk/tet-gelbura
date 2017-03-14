@@ -1,14 +1,15 @@
-function fitHeight(longItem, tallItem) {
+function fitHeight(firstItem, secondItem) {
     if ($(window).innerWidth() > 767) {
-        var masterHeight = $(longItem).outerHeight();
-        var tallHeight = $(tallItem).outerHeight();
-        if(masterHeight < tallItem){
-            $(longItem).css("height", tallHeight + "px");
+        var firstItemH = $(firstItem).outerHeight();
+        var secondItemH = $(secondItem).outerHeight();
+        if(firstItem > secondItem){
+            $(secondItem).css("height", firstItemH+ "px");
         } else {
-            $(tallItem).css("height", masterHeight + "px");
+            $(firstItem).css("height", secondItemH+ "px");
         }
     } else {
-        $(tallItem).css("height", "auto");
+        $(firstItem).css("height", "auto");
+        $(secondItem).css("height", "auto");
     }
 }
 $(function () {
