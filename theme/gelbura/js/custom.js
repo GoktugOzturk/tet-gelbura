@@ -2,7 +2,7 @@ function fitHeight(longItem, tallItem) {
     if ($(window).innerWidth() > 767) {
         var masterHeight = $(longItem).outerHeight();
         var tallHeight = $(tallItem).outerHeight();
-        if($masterHeight < tallItem){
+        if(masterHeight < tallItem){
             $(longItem).css("height", tallHeight + "px");
         } else {
             $(tallItem).css("height", masterHeight + "px");

@@ -129,7 +129,6 @@ a:hover {
 
 #navigation li > a {
     display: block;
-    height: 52px;
     font-size: 12px;
     line-height: 16px;
     font-weight: bold;
@@ -141,6 +140,10 @@ a:hover {
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+}
+
+#navigation .nav > li > a {
+    height: 52px;
 }
 
 #navigation li > a > span {
@@ -922,6 +925,31 @@ a {
 .mm-opening #mobile-menu-buttons {
     left: 80%;
     right: -80%;
+}
+
+.dropdown-menu.mm-opened div > a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10px 10px 10px 0;
+    margin-left: -15px;
+    color: inherit;
+    display: block;
+}
+
+.dropdown-menu.mm-opened div > a:not(.mm-divider):after {
+    content: '';
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 20px;
+}
+
+.dropdown-menu.mm-opened div > a span {
+    display: none;
 }
 
 .page-title {
