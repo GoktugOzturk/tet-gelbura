@@ -1,0 +1,69 @@
+<?php
+/**
+ * @var int          $collection_id
+ * @var string       $collection_name
+ * @var string       $collection_text
+ * @var string       $cover_image
+ * @var ob_product[] $products
+ */
+?>
+<div class="container">
+    <? view::show_breadcrumbs() ?>
+    <div>
+        <img src="<?= $cover_image ?>" class="img-responsive" alt="<?= $collection_name ?>"/>
+    </div>
+    <h1><?= $collection_name ?></h1>
+    <p>
+        <?= $collection_text ?>
+    </p>
+</div>
+<? if (isset($products) && is_array($products) && count($products) > 0) { ?>
+    <div id="items-container" class="mb30">
+        <div class="items-wrapper cat-block clearfix fix-height-items">
+            <ul class="items">
+                <? foreach ($products as $key => $product) { ?>
+                    <li class="item col-lg-2 col-md-3 col-sm-6 col-xs-6 <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
+                        <a href="<?= $product->getUrl() ?>">
+                            <img class="image" src="<?= $product->getPhoto("catalog") ?>">
+                            <h5 class="name"><?= $product->full_name ?></h5>
+                            <? if ($product->is_saleable) { ?>
+                                <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>
+                                    <p class="old-price"><?= icms::format_money($product->getBasePrice()) ?></p>
+                                <? } ?>
+                                <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
+                            <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
+                                <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
+                            <? } ?>
+                            <? $rating = $product->getRating(); ?>
+                            <? if ($rating->getCount() > 0) { ?>
+                                <div class="rating">
+                                    <div class="stars" data-score="<?= $rating->getScore() ?>" data-readonly="true"></div>
+                                </div>
+                            <? } ?>
+                            <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                                <div class="discount-percent">
+                                    <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
+                                </div>
+                            <? } ?>
+                            <? if (false && $product->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+                                <div class="badge free-cargo">
+                                    <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+                                </div>
+                            <? } ?>
+                            <? if (false && $product->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                                <div class="badge fast-cargo">
+                                    <div class="option"><span class="sprite"></span><span class="text">HIZLI KARGO</span></div>
+                                </div>
+                            <? } ?>
+                            <? if (false && $product->hasBadge(ob_product::BADGE_NEW)) { ?>
+                                <div class="badge new-product">
+                                    <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
+                                </div>
+                            <? } ?>
+                        </a>
+                    </li>
+                <? } ?>
+            </ul>
+        </div>
+    </div>
+<? } ?>

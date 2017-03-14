@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var array $parentCategories
+ * @var array $subCategories
+ * @var array $filterGroups
+ */
+?>
+<!-- secimler -->
+<? if (count($subCategories)) { ?>
+    <div class="filter-content">
+        <h5 class="filter-title">KATEGORİ</h5>
+        <div class="fix-height-container-wb">
+            <ul class="fix-height-wb">
+                <? foreach ($subCategories as $category) { ?>
+                    <li><a href="<?= $category['link'] ?>"><?= $category['title'] ?></a></li>
+                <? } ?>
+            </ul><!-- #nav# -->
+        </div><!-- #block# -->
+    </div><!-- #filter-content# -->
+<? } ?>
+<? if (count($filterGroups)) { ?>
+    <? foreach ($filterGroups as $filterGroup) { ?>
+        <div class="filter-content">
+            <h5 class="filter-title"><?= $filterGroup['title'] ?></h5><span class="sprite order-by-a-z"></span>
+            <ul class="fix-height">
+                <? foreach ($filterGroup['items'] as $item) { ?>
+                    <li><a href="<?= $item['link'] ?>"><?= $item['title'] ?> (<?= $item['resultCount'] ?>)</a></li>
+                <? } ?>
+            </ul><!-- #nav# -->
+        </div><!-- #block# -->
+    <? } ?>
+<? } ?>

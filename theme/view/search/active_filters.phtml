@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var string $clearAllActiveFiltersLink
+ * @var array  $activeFilters
+ */
+?>
+<div class="selected-filters">
+    <? foreach ($activeFilters as $activeFilter) { ?>
+        <div class="s-filter-brand">
+            <span><?= $activeFilter['filterKey'] ?><a href="<?= $activeFilter['clearLink'] ?>" class="s-remove-filter">X</a></span>
+            <?= $activeFilter['filterValue'] ?>
+        </div>
+    <? } ?>
+</div>

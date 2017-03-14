@@ -1,6 +1,7 @@
 <?
 /**
- * @var string       $filterHtml
+ * @var string       $activeFiltersHtml
+ * @var string       $facetHtml
  * @var string       $descriptionBlock
  * @var ob_category  $category
  * @var ob_brand     $brand
@@ -39,7 +40,9 @@
 </h1>
 <div class="row">
     <div class="col-md-3" id="filter-wrapper">
-        <?= $filterHtml ?>
+        <div class="filter-col">
+            <?= $facetHtml ?>
+        </div>
     </div>
     <div class="col-md-9 mb30">
         <a id="filtreler-btn" href="#filter-wrapper">Filtrele</a>
@@ -63,12 +66,7 @@
             </ul><!-- #productFilter# -->
         <? } ?>
         <div id="items-container" class="mb30">
-            <div class="selected-filters">
-                <div class="s-filter-brand">
-                    <span>Marka<a class="s-remove-filter">X</a></span>
-                    Apple
-                </div>
-            </div>
+            <?= $activeFiltersHtml ?>
             <div class="items-wrapper cat-block clearfix fix-height-items">
                 <? if (isset($products) && is_array($products) && count($products) > 0) { ?>
                     <ul class="items">

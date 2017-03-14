@@ -68,7 +68,7 @@
                     <form id="search" action="/ara">
                         <div id="search" class="input-group input-group-lg">
                             <?= menu::generateSearchCategoryMenu() ?>
-                            <input class="form-control" aria-label="..." placeholder="Aradığınız Herşey Gelbura’da" type="text">
+                            <input type="text" name="q" id="searchQuery" class="form-control" aria-label="..." placeholder="Aradığınız Herşey Gelbura’da">
                             <span class="input-group-btn">
                                 <button id="search-button" class="btn btn-default" type="button" onclick="$('form#search').submit();">
                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
