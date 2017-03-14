@@ -198,7 +198,7 @@ a:hover {
     display: block;
 }
 
-#navigation ul > li {
+#navigation nav > ul > li {
     height: 100%;
     position: static;
     display: table-cell;
@@ -223,6 +223,14 @@ a:hover {
 
 #navigation .nav-logo:hover a {
     background: none;
+}
+
+#navigation .catalogBanners li {
+    margin-bottom: 15px;
+}
+
+#navigation .catalogBanners li:last-child {
+    margin-bottom: 0;
 }
 
 #nav-logo {
@@ -652,15 +660,15 @@ a {
 
 .buttonCheckout,
 .btn-orange {
-    background-color: #ee6a05 !important;
-    border-color: #ee6a05 !important;
+    background-color: #EE6A05 !important;
+    border-color: #EE6A05 !important;
     color: #FFF !important;
 }
 
 .buttonCheckout,
 .btn-orange:hover {
-    background-color: #d55d01 !important;
-    border-color: #ee6a05 !important;
+    background-color: #D55D01 !important;
+    border-color: #EE6A05 !important;
     color: #FFF !important;
 }
 
@@ -961,7 +969,7 @@ a {
 .sidebar ul li a {
     display: block;
     padding: 10px 0 10px 10px;
-    color: #000000;
+    color: #000;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -976,7 +984,7 @@ a {
 }
 
 .default-page section {
-    background: #FFFFFF;
+    background: #FFF;
     padding: 15px;
     border-radius: 7px;
 }
