@@ -937,7 +937,7 @@ a {
     display: block;
 }
 
-.dropdown-menu.mm-opened div > a:not(.mm-divider):after {
+.dropdown-menu.mm-opened div:not(.mm-navbar) > a:not(.mm-divider):after {
     content: '';
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -945,10 +945,15 @@ a {
     position: absolute;
     right: 0;
     bottom: 0;
-    left: 20px;
+    left: 0;
+    opacity: 0.1;
 }
 
 .dropdown-menu.mm-opened div > a span {
+    display: none;
+}
+
+.mm-menu .nav-logo {
     display: none;
 }
 
