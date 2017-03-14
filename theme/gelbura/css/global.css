@@ -129,7 +129,7 @@ a:hover {
 
 #navigation li > a {
     display: block;
-    height: 100%;
+    height: 52px;
     font-size: 12px;
     line-height: 16px;
     font-weight: bold;
