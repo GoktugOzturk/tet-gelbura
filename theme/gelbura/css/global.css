@@ -249,8 +249,14 @@ a:hover {
 }
 
 .navbar-fixed-top #nav-logo {
-    width: 112px;
-    height: 36px;
+    width: auto;
+    float: none;
+    position: static;
+    margin: 0;
+}
+
+.navbar-fixed-top #nav-logo img {
+    margin-top: 5px;
 }
 
 .navbar-fixed-top#navigation li a {
