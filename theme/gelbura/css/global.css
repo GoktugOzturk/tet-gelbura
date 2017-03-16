@@ -97,11 +97,12 @@ a:hover {
 }
 
 #cart #product-number {
-    width: 17px;
+    min-width: 17px;
     height: 17px;
     line-height: 17px;
-    border-radius: 100%;
+    border-radius: 30px;
     background: #FDCB22;
+    padding: 0 4px;
     position: absolute;
     top: 5px;
     right: 10px;
@@ -424,9 +425,10 @@ a {
 
 .items-wrapper .item .name {
     color: #616161;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
     margin-bottom: 0;
-    height: 40px;
+    height: 50px;
     overflow: hidden;
 }
 
@@ -1048,6 +1050,10 @@ a {
 
 .fix-height-items .item {
     height: 310px;
+}
+
+.product-piece #productQuantity {
+    width: 50px;
 }
 
 @media (min-width: 550px) {

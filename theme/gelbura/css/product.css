@@ -1,6 +1,6 @@
 .product-title {
     font-size: 29px;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 15px;
     margin-bottom: 20px;
     letter-spacing: -2px;
@@ -263,7 +263,7 @@
     border: 0;
     color: #FFF;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
