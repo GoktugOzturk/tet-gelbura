@@ -1050,7 +1050,8 @@ a {
 }
 
 #mainSlider,
-#mainSlider .col-md-12 {
+#mainSlider .col-md-12,
+#mainSlider .row{
     padding-left: 0;
     padding-right: 0;
 }
