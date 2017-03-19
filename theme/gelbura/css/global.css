@@ -359,13 +359,13 @@ a {
 .slider .owl-prev {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 10px;
 }
 
 .slider .owl-next {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 10px;
 }
 
 .slider .owl-dot {
@@ -1050,10 +1050,14 @@ a {
 }
 
 #mainSlider,
-#mainSlider .col-md-12,
-#mainSlider .row{
+#mainSlider .col-md-12 {
     padding-left: 0;
     padding-right: 0;
+}
+
+#mainSlider .row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 @media (min-width: 550px) {
