@@ -19,7 +19,7 @@
             <? foreach ($paymentTabs as $paymentKey => $paymentName) { ?>
                 <li role="presentation">
                     <a href="#<?= $paymentKey ?>Tab" aria-controls="<?= $paymentKey ?>Tab" role="tab" data-url="/checkout/paymentForm/<?= $paymentKey ?>"
-                        data-target="#<?= $paymentKey ?>Tab" data-toggle="tab" data-paymentmethod="<?= $paymentKey ?>"> <?= $paymentName ?> </a>
+                            data-target="#<?= $paymentKey ?>Tab" data-toggle="tab" data-paymentmethod="<?= $paymentKey ?>"> <?= $paymentName ?> </a>
                 </li>
             <? } ?>
         </ul>

@@ -67,6 +67,7 @@
                                         zoomWindowWidth: 433,
                                         borderSize: 0,
                                         easing: true,
+                                        z_index: 999,
                                         respond: [
                                             {
                                                 range: '100-599',
@@ -193,9 +194,9 @@
                                 <input type="hidden" name="property[<?= $propertyId ?>]" value="<?= $propertyData['selected'] ?>">
                                 <label><?= $propertyData['name'] ?></label>
                                 <ul class="nav">
-                                    <? foreach ($propertyData['options'] AS $optionId => $optionName) { ?>
+                                    <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
                                         <li <?= ($propertyData['selected'] == $optionId ? 'class="active"' : '') ?> id="property-<?= $propertyId ?>-<?= $optionId ?>"><a
-                                                href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionName ?></a>
+                                                    href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionData['name'] ?></a>
                                             <span class="price"><?= icms::format_money($optionData['price']) ?></span>
                                         </li>
                                     <? } ?>
@@ -242,7 +243,7 @@
                         <div class="btn-group" role="group" aria-label="...">
                             <button onclick="quantity('#productQuantity','down')" type="button" class="btn btn-default">-</button>
                             <input name="quantity" id="productQuantity" class="btn btn-default" value="1" type="text" min="1" max="<?= $obProduct->saleableProductCount() ?>"
-                                onblur="quantity($(this))">
+                                    onblur="quantity($(this))">
                             <button onclick="quantity('#productQuantity','up')" type="button" class="btn btn-default">+</button>
                         </div>
                         <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
@@ -250,7 +251,7 @@
                         <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
                     </div>
                     <a href="javascript:;" class="add-to-cart btn btn-default btn-lg"
-                        onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
+                            onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
                         + Sepete Ekle</a>
                     <div class="clearfix"></div>
                     <p class="cargo-info">Bu ürün tahmini <?= $obProduct->leadTime() ?> iş gününde kargoya teslim edilir.</p>
@@ -278,7 +279,7 @@
                 <li class="active"><a href="#product-info" role="tab" data-toggle="tab"><span class="sprite sprite-details"></span>ÜRÜN BİLGİSİ</a></li>
                 <li><a id="comments-link" href="#comments" role="tab" data-toggle="tab"><span class="sprite sprite-details"></span>YORUM VE SORU</a></li>
                 <li><a href="#installment" role="tab" data-toggle="tab" data-url="/product/get_installment_options/<?= $mainProductId ?>"><span
-                            class="sprite sprite-details"></span>TAKSİT SEÇENEKLERİ</a></li>
+                                class="sprite sprite-details"></span>TAKSİT SEÇENEKLERİ</a></li>
                 <li><a href="#warranty" role="tab" data-toggle="tab" data-url="/product/get_return_text"><span class="sprite sprite-details"></span>GARANTİ VE İADE</a></li>
                 <li><a href="#review" role="tab" data-toggle="tab"><span class="sprite sprite-details"></span>ÜRÜN İNCELEMESİ</a></li>
             </ul>

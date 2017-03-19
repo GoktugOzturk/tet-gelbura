@@ -29,8 +29,8 @@
                                 <li><a role="button" href="/siparis-takip">SİPARİŞ TAKİP</a></li>
                                 <li><a role="button" href="/iletisim">İLETİŞİM</a></li>
                                 <li class="dropdown"><a role="button" class="dropdown-toggle" href="javascript:" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"><span class="sprite sprite-toolbar user"></span> Hesabım [<?= mb_strtoupper(session::get("firstName")) ?>] <span
-                                            class="caret"></span> </a>
+                                            aria-expanded="false"><span class="sprite sprite-toolbar user"></span> Hesabım [<?= mb_strtoupper(session::get("firstName")) ?>] <span
+                                                class="caret"></span> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/account/details"><i class="glyphicon glyphicon-user"></i> Kişisel Bilgilerim</a></li>
                                         <li><a href="/account/addresses"><i class="glyphicon glyphicon-list-alt"></i> Adreslerim</a></li>
@@ -62,7 +62,7 @@
             <div class="row">
                 <div id="logo-wrapper" class="col-md-2">
                     <a href="/" id="logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>" src="<?= view::getLogo('logo') ?>"
-                            srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
+                                srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
                 </div>
                 <div class="col-md-8">
                     <form id="search" action="/ara">

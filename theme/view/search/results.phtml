@@ -21,7 +21,7 @@
     </div>
 <? } ?>
 <!-- #breadcrumbs# -->
-<?= view::show_breadcrumbs() ?>
+<? view::show_breadcrumbs() ?>
 <!-- #breadcrumbs# -->
 <h1 class="page-title">
     <? if (isset($qs)) {
@@ -61,7 +61,7 @@
                     $url['query'] = $sortLink['linkQuery'];
                     ?>
                     <li><a href="<?= icms::build_url($url) ?>" class="<?= $sortLink['isActive'] ? 'active' : '' ?>"><span
-                                class="sprite sprite-filter <?= $sortLink['class'] ?>"></span> <?= $sortLink['title'] ?></a></li>
+                                    class="sprite sprite-filter <?= $sortLink['class'] ?>"></span> <?= $sortLink['title'] ?></a></li>
                 <? } ?>
             </ul><!-- #productFilter# -->
         <? } ?>

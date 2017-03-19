@@ -5,14 +5,22 @@
 }
 
 header {
-    border-bottom: 4px solid #ee6a05;
+    border-bottom: 4px solid #EE6A05;
     margin-bottom: 30px;
     padding: 10px 0;
     background: #FFF;
 }
 
 #buyNowButton {
-    background: #ee6a05;
+    background: #EE6A05;
+    padding: 15px;
+    color: #FFF;
+    border-radius: 4px;
+    margin: 10px 0 0;
+}
+
+#updateButton {
+    background: #E6C229;
     padding: 15px;
     color: #FFF;
     border-radius: 4px;
@@ -20,7 +28,7 @@ header {
 }
 
 .grey.acc-btn {
-    background: #ccc;
+    background: #CCC;
     padding: 15px;
     color: #000;
     border-radius: 4px;
@@ -58,12 +66,12 @@ header {
 
 .checkout-bar li.active {
     color: #FFF;
-    background: #ee6a05 !important;
+    background: #EE6A05 !important;
 }
 
 .checkout-bar li.visited a {
     color: #000;
-    background: #ccc !important;
+    background: #CCC !important;
 }
 
 .checkout-bar li a {

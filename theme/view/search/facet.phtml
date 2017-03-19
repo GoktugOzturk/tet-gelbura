@@ -9,13 +9,11 @@
 <? if (count($subCategories)) { ?>
     <div class="filter-content">
         <h5 class="filter-title">KATEGORİ</h5>
-        <div class="fix-height-container-wb">
-            <ul class="fix-height-wb">
-                <? foreach ($subCategories as $category) { ?>
-                    <li><a href="<?= $category['link'] ?>"><?= $category['title'] ?></a></li>
-                <? } ?>
-            </ul><!-- #nav# -->
-        </div><!-- #block# -->
+        <ul>
+            <? foreach ($subCategories as $category) { ?>
+                <li><a href="<?= $category['link'] ?>"><?= $category['title'] ?></a></li>
+            <? } ?>
+        </ul><!-- #nav# -->
     </div><!-- #filter-content# -->
 <? } ?>
 <? if (count($filterGroups)) { ?>

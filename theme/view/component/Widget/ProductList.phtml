@@ -12,32 +12,32 @@
         <ul class="items">
             <? $i = 1; ?>
             <? foreach ($products as $key => $product) { ?>
-            <li class="item">
-                <a href="<?= $product->getUrl() ?>">
-                    <div class="num"><?=($i++)?>.</div>
-                    <img class="image" src="<?= $product->getPhoto("thumb") ?>">
-                    <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                    <div class="discount-percent">
-                        <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
-                    </div>
-                    <? } ?>
-                    <div class="details">
-                        <h5 class="name"><?= $product->full_name ?></h5>
+                <li class="item">
+                    <a href="<?= $product->getUrl() ?>">
+                        <div class="num"><?= ($i++) ?>.</div>
+                        <img class="image" src="<?= $product->getPhoto("thumb") ?>">
                         <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                            <p class="old-price"><?= icms::format_money($product->getBasePrice()) ?></p>
+                            <div class="discount-percent">
+                                <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
+                            </div>
                         <? } ?>
-                        <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
-                    </div>
-                </a>
-                <div class="reviews">
-                    <? $rating = $product->getRating(); ?>
-                    <? if ($rating->getCount() > 0) { ?>
-                        <div class="rating">
-                            <div class="stars" data-score="<?= $rating->getScore() ?>" data-readonly="true"></div>
+                        <div class="details">
+                            <h5 class="name"><?= $product->full_name ?></h5>
+                            <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                                <p class="old-price"><?= icms::format_money($product->getBasePrice()) ?></p>
+                            <? } ?>
+                            <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
                         </div>
-                    <? } ?>
-                </div>
-            </li>
+                    </a>
+                    <div class="reviews">
+                        <? $rating = $product->getRating(); ?>
+                        <? if ($rating->getCount() > 0) { ?>
+                            <div class="rating">
+                                <div class="stars" data-score="<?= $rating->getScore() ?>" data-readonly="true"></div>
+                            </div>
+                        <? } ?>
+                    </div>
+                </li>
             <? } ?>
         </ul>
     </div>

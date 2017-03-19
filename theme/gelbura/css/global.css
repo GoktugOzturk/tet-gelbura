@@ -117,6 +117,7 @@ a:hover {
     background: #EE6A05;
     border-bottom: 5px solid #FFC70B;
     min-height: 50px;
+    z-index: 1000;
 }
 
 #navigation #main-menu {
