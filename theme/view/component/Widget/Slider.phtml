@@ -22,8 +22,8 @@
             loop: <?=$data['owl-loop'] ?>,
             dots: <?=$data['owl-dots'] ?>,
             nav: <?=$data['owl-nav'] ?>,
-            navText: <?=(!empty($data['owl-navText']) ? $data['owl-navText'] :
-            '[\'<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\', \'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\']') ?>,
+            navText: <?=(!empty($data['owl-navText']) ? "'" . $data['owl-navText'] . "'" :
+            '[\'<div class="owl-prev"><div class="sprite slide-prev" aria-hidden="true"></div></div>\', \'<div class="owl-next"><div class="sprite slide-next" aria-hidden="true"></div></div>\']') ?>,
             autoplay: <?=(count($banners) > 1 ? $data['owl-autoplay'] : 'false') ?>,
             autoplayTimeout: <?=$data['owl-autoplayTimeout'] ?>,
             autoplayHoverPause: <?=$data['owl-autoplayHoverPause'] ?>, // Stops autoplay

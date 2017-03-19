@@ -62,5 +62,10 @@ view::requireAsset('masonry');
                 $(this).data('masonry', true);
             }
         });
+        $(document).on('oasis.resize', function () {
+            $('#navigation').find('.dropdown-opener').each(function () {
+                $(this).data('masonry', false);
+            })
+        });
     });
 </script>

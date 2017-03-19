@@ -45,7 +45,7 @@ a:hover {
 
 #header {
     position: relative;
-    z-index: 3;
+    z-index: 1000;
     margin-bottom: 15px;
 }
 
