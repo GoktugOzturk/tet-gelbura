@@ -222,10 +222,6 @@
     background: none;
 }
 
-.product-piece #productQuantity {
-    width: 40px;
-}
-
 .add-to-cart {
     text-decoration: none;
     color: #FFF;
@@ -236,6 +232,10 @@
     font-weight: bold;
     background: #EE6A05;
     float: right;
+}
+
+.product-piece #productQuantity {
+    width: 50px;
 }
 
 .add-to-cart:focus,

@@ -261,10 +261,6 @@ a:hover {
     margin-top: 5px;
 }
 
-.navbar-fixed-top#navigation li a {
-    font-size: 12px;
-}
-
 #navigation li > a:focus {
     background: none;
     text-decoration: none;
@@ -1053,8 +1049,10 @@ a {
     height: 310px;
 }
 
-.product-piece #productQuantity {
-    width: 50px;
+#mainSlider,
+#mainSlider .col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 @media (min-width: 550px) {
@@ -1083,13 +1081,12 @@ a {
         margin: 0 auto;
     }
 
-    #nav-logo {
+    .navbar-fixed-top#navigation .nav-logo {
         display: none !important;
     }
 
     .navbar-fixed-top#navigation li a {
         font-size: 11px;
-        padding: 15px 8px;
     }
 }
 
