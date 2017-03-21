@@ -70,7 +70,7 @@
 
 .image-container {
     position: absolute;
-    top: 190px;
+    top: 170px;
     left: 35px;
     z-index: 1;
     width: 170px;
@@ -80,7 +80,7 @@
 }
 
 .category-image {
-    min-height: 396px;
+    min-height: 371px;
     text-align: center;
     border-radius: 7px;
     overflow: hidden;
@@ -110,7 +110,7 @@
     border-radius: 100%;
     opacity: 0.3;
     z-index: 0;
-    top: 190px;
+    top: 170px;
     left: 35px;
     width: 160px;
     height: 160px;
@@ -197,7 +197,7 @@
 }
 
 .image-block {
-    min-height: 375px;
+    min-height: 350px;
     margin-left: -30px;
     background: #FFF;
     border-radius: 0 0 7px 0;

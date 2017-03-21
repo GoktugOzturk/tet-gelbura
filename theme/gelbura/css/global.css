@@ -286,7 +286,7 @@ a {
 
 .sprite {
     display: block;
-    background: url("../img/sprite.png") no-repeat;
+    background: url("../img/sprite.png?qrev=1") no-repeat;
 }
 
 .sprite-toolbar {
@@ -474,7 +474,7 @@ a {
     font-weight: bold;
     padding: 11px 0 0 3px;
     display: block;
-    background: url("theme/gelbura/img/xsprite.png,qrev=1.pagespeed.ic.Y_BJi_BlYP.webp") no-repeat;
+    background: url("../img/sprite.png?qrev=1") no-repeat;
     background-position: -238px -158px;
 }
 
