@@ -1008,7 +1008,7 @@ a {
 .page-title {
     font-size: 29px;
     font-weight: bold;
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 20px;
     letter-spacing: -2px;
     color: #3A3A3A;
@@ -1199,7 +1199,7 @@ a {
     }
 
     .items-wrapper .item {
-        height: 315px;
+        min-height: 315px;
     }
 }
 
@@ -1234,7 +1234,7 @@ a {
     }
 
     .items-wrapper .item {
-        height: 260px;
+        min-height: 260px;
     }
 
     .product-price {
