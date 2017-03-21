@@ -485,7 +485,7 @@ a {
     width: 40px;
 }
 
-.items-wrapper .item .badge.new-product {
+.items-wrapper .item .badge.new-product .ayni-gun-kargo {
     width: 40px;
     height: 40px;
     background-position: -1085px -46px;
@@ -1085,7 +1085,7 @@ a {
 }
 
 .fix-height-items .item {
-    height: 310px;
+    height: 320px;
 }
 
 #mainSlider,
