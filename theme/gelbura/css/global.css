@@ -438,7 +438,8 @@ a {
     color: #707070;
     font-size: 18px;
     line-height: 18px;
-    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .items-wrapper .item .price {
@@ -468,7 +469,7 @@ a {
     height: 47px;
     -moz-border-radius: 100%;
     text-align: left;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 14px;
     font-weight: bold;
     padding: 11px 0 0 3px;
@@ -490,16 +491,28 @@ a {
     background-position: -1085px -46px;
 }
 
-.items-wrapper .item .badge.new-product .sprite{
+.items-wrapper .item .badge.new-product .sprite {
     width: 40px;
     height: 40px;
     background-position: -1086px -87px;
 }
 
-.items-wrapper .item .badge.kampanya .sprite{
+.items-wrapper .item .badge.kampanya .sprite {
     width: 40px;
     height: 40px;
     background-position: -1087px -130px;
+}
+
+.items-wrapper .item .badge.ucretsiz-kargo {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.items-wrapper .item .badge.ucretsiz-kargo .sprite {
+    width: 40px;
+    height: 40px;
+    background-position: -1086px 2px;
 }
 
 .items-wrapper .item .discount-percent .discount-icon {
