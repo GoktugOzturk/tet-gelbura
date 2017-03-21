@@ -463,30 +463,52 @@ a {
     position: absolute;
     right: 0;
     bottom: 15px;
-    background: #FFC100;
-    width: 70px;
-    height: 70px;
-    -webkit-border-radius: 100%;
+    background: #ffc100;
+    width: 49px;
+    height: 47px;
     -moz-border-radius: 100%;
-    border-radius: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
-    line-height: 18px;
+    line-height: 14px;
     font-weight: bold;
-    padding: 18px 0 0 0;
+    padding: 11px 0 0 3px;
+    display: block;
+    background: url("theme/gelbura/img/xsprite.png,qrev=1.pagespeed.ic.Y_BJi_BlYP.webp") no-repeat;
+    background-position: -238px -158px;
+}
+
+.items-wrapper .item .badges {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 40px;
 }
 
 .items-wrapper .item .badge.new-product {
+    width: 40px;
+    height: 40px;
+    background-position: -1085px -46px;
+}
 
+.items-wrapper .item .badge.new-product .sprite{
+    width: 40px;
+    height: 40px;
+    background-position: -1086px -87px;
+}
+
+.items-wrapper .item .badge.kampanya .sprite{
+    width: 40px;
+    height: 40px;
+    background-position: -1087px -130px;
 }
 
 .items-wrapper .item .discount-percent .discount-icon {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .items-wrapper .item .discount-percent .discount-text {
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 600;
     display: block;
 }
@@ -1229,11 +1251,13 @@ a {
         margin: 0 auto;
         float: none;
     }
-    .slider .owl-dots{
+
+    .slider .owl-dots {
         display: none;
     }
+
     .sprite.slide-prev,
-    .sprite.slide-next{
+    .sprite.slide-next {
         transform: scale(0.5);
     }
 }
