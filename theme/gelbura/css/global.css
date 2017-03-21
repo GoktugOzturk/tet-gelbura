@@ -1105,7 +1105,7 @@ a {
     }
 
     #header-glob {
-        margin: 75px auto 10px auto;
+        margin: 45px auto 10px auto;
     }
 
     #logo {
@@ -1164,7 +1164,7 @@ a {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .mmb30 {
         margin-bottom: 30px;
     }
@@ -1225,5 +1225,11 @@ a {
         margin: 0 auto;
         float: none;
     }
-
+    .slider .owl-dots{
+        display: none;
+    }
+    .sprite.slide-prev,
+    .sprite.slide-next{
+        transform: scale(0.5);
+    }
 }

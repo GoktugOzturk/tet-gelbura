@@ -351,7 +351,7 @@
 @media only screen and (max-width: 767px) {
     .items-wrapper .item .image,
     #gunun-firsati .image {
-        width: 140px;
+        width: 100%;
     }
 
     .show-all-btn {
