@@ -74,7 +74,10 @@
                                     });
                             }
 
-                            $(document).on('oasis.resize', initEZPlus);
+                            $(document).on('oasis.resize', function () {
+                                initEZPlus();
+                                fitHeight(".product-details-container", ".product-image-wrapper");
+                            });
                         });
                     </script>
                 </div><!-- #productImages# -->

@@ -76,12 +76,12 @@
                                     <img class="image" src="<?= $product->getPhoto("catalog") ?>">
                                     <h5 class="name"><?= $product->full_name ?></h5>
                                     <? if ($product->is_saleable) { ?>
+                                        <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
                                         <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>
-                                            <p class="old-price"><?= icms::format_money($product->getBasePrice()) ?></p>
+                                            <p class="old-price"><?= icms::format_money($product->getBasePrice(), 'TL', true) ?></p>
                                         <? } ?>
-                                        <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
                                     <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
-                                        <p class="price"><?= icms::format_money($product->getSalePrice()) ?></p>
+                                        <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
                                     <? } ?>
                                     <? $rating = $product->getRating(); ?>
                                     <? if ($rating->getCount() > 0) { ?>
@@ -91,24 +91,39 @@
                                     <? } ?>
                                     <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
                                         <div class="discount-percent">
-                                            <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
+                                            <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">i̇ndi̇ri̇m</span>
                                         </div>
                                     <? } ?>
-                                    <? if (false && $product->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
-                                        <div class="badge free-cargo">
-                                            <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+                                    <? if ($product->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+                                        <div class="badge ucretsiz-kargo">
+                                            <div class="option">
+                                                <span class="sprite"></span>
+                                            </div>
                                         </div>
                                     <? } ?>
-                                    <? if (false && $product->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
-                                        <div class="badge fast-cargo">
-                                            <div class="option"><span class="sprite"></span><span class="text">HIZLI KARGO</span></div>
-                                        </div>
-                                    <? } ?>
-                                    <? if (false && $product->hasBadge(ob_product::BADGE_NEW)) { ?>
-                                        <div class="badge new-product">
-                                            <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
-                                        </div>
-                                    <? } ?>
+                                    <div class="badges">
+                                        <? if ($product->hasBadge(ob_product::BADGE_NEW)) { ?>
+                                            <div class="badge new-product">
+                                                <div class="option">
+                                                    <span class="sprite"></span>
+                                                </div>
+                                            </div>
+                                        <? } ?>
+                                        <? if ($product->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                                            <div class="badge ayni-gun-kargo">
+                                                <div class="option">
+                                                    <span class="sprite"></span>
+                                                </div>
+                                            </div>
+                                        <? } ?>
+                                        <? if ($product->hasBadge(ob_product::BADGE_CAMPAIGN)) { ?>
+                                            <div class="badge kampanya">
+                                                <div class="option">
+                                                    <span class="sprite"></span>
+                                                </div>
+                                            </div>
+                                        <? } ?>
+                                    </div>
                                 </a>
                             </li>
                         <? } ?>

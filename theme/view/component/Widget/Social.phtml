@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var string $widgetTitle
+ * @var array  $socialData
+ */
+?>
+<h3><?= $widgetTitle ?></h3>
+<ul class="social-wrapper">
+    <? if ($socialData['facebook']['haspage'] && !empty($socialData['facebook']['pageurl'])) { ?>
+        <li class="sprite social fb"><a title="Facebook" href="<?= $socialData['facebook']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+    <? if ($socialData['instagram']['haspage'] && !empty($socialData['instagram']['pageurl'])) { ?>
+        <li class="sprite social ins"><a title="Instagram" href="<?= $socialData['instagram']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+    <? if ($socialData['twitter']['haspage'] && !empty($socialData['twitter']['pageurl'])) { ?>
+        <li class="sprite social tw"><a title="Twitter" href="<?= $socialData['twitter']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+    <? if ($socialData['googleplus']['haspage'] && !empty($socialData['googleplus']['pageurl'])) { ?>
+        <li class="sprite social go"><a title="Google+" href="<?= $socialData['googleplus']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+    <? if ($socialData['pinterest']['haspage'] && !empty($socialData['pinterest']['pageurl'])) { ?>
+        <li class="sprite social pin"><a title="Pinterest" href="<?= $socialData['pinterest']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+    <? if ($socialData['youtube']['haspage'] && !empty($socialData['youtube']['pageurl'])) { ?>
+        <li class="sprite social yt"><a title="Youtube" href="<?= $socialData['youtube']['pageurl'] ?>" target="_blank" rel="nofollow"></a></li>
+    <? } ?>
+</ul>
+<div class="clearfix"></div>

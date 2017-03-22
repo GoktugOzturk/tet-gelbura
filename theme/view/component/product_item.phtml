@@ -14,10 +14,10 @@
             <?= $product->obProduct->product_name ?>
         </h5>
     <? } ?>
+    <p class="price"><?= icms::format_money($product->obProduct->getSalePrice(), 'TL', true) ?></p>
     <? if ($product->showBasePrice) { ?>
-        <p class="old-price"><?= icms::format_money($product->obProduct->getBasePrice()) ?></p>
+        <p class="old-price"><?= icms::format_money($product->obProduct->getBasePrice(), 'TL', true) ?></p>
     <? } ?>
-    <p class="price"><?= icms::format_money($product->obProduct->getSalePrice()) ?></p>
     <? $rating = $product->obProduct->getRating(); ?>
     <? if ($rating->getCount() > 0) { ?>
         <div class="rating">
@@ -26,22 +26,37 @@
     <? } ?>
     <? if ($product->obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
         <div class="discount-percent">
-            <span class="discount-icon">%</span><?= $product->obProduct->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
+            <span class="discount-icon">%</span><?= $product->obProduct->getDiscountPercent() ?><span class="discount-text">i̇ndi̇ri̇m</span>
         </div>
     <? } ?>
     <? if ($product->freeShipping && $product->obProduct->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
-        <div class="badge free-cargo">
-            <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+        <div class="badge ucretsiz-kargo">
+            <div class="option">
+                <span class="sprite"></span>
+            </div>
         </div>
     <? } ?>
-    <? if ($product->fastShipping && $product->obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
-        <div class="badge fast-cargo">
-            <div class="option"><span class="sprite"></span><span class="text">HIZLI KARGO</span></div>
-        </div>
-    <? } ?>
-    <? if ($product->obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
-        <div class="badge new-product">
-            <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
-        </div>
-    <? } ?>
+    <div class="badges">
+        <? if ($product->obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
+            <div class="badge new-product">
+                <div class="option">
+                    <span class="sprite"></span>
+                </div>
+            </div>
+        <? } ?>
+        <? if ($product->fastShipping && $product->obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+            <div class="badge ayni-gun-kargo">
+                <div class="option">
+                    <span class="sprite"></span>
+                </div>
+            </div>
+        <? } ?>
+        <? if ($product->obProduct->hasBadge(ob_product::BADGE_CAMPAIGN)) { ?>
+            <div class="badge kampanya">
+                <div class="option">
+                    <span class="sprite"></span>
+                </div>
+            </div>
+        <? } ?>
+    </div>
 </a>

@@ -436,7 +436,7 @@ a {
 .items-wrapper .item .old-price {
     text-decoration: line-through;
     color: #707070;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 18px;
     margin-top: 5px;
     margin-bottom: 0;
@@ -464,7 +464,7 @@ a {
     position: absolute;
     right: 0;
     bottom: 15px;
-    background: #ffc100;
+    background: #FFC100;
     width: 49px;
     height: 47px;
     -moz-border-radius: 100%;
@@ -1217,8 +1217,12 @@ a {
     }
 
     .items-wrapper .item .discount-percent {
-        top: 0;
+        bottom: 25px;
         transform: scale(0.8, 0.8);
+    }
+
+    .items-wrapper .item .price {
+        font-size: 20px;
     }
 
     .mm-panels > .dropdown-menu.mm-panel > .mm-listview {
