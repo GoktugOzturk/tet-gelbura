@@ -1109,6 +1109,11 @@ a {
     min-width: 66px;
 }
 
+.social-wrapper li a {
+    width: 32px;
+    height: 30px;
+}
+
 @media (min-width: 550px) {
     .mm-opening #mobile-menu-buttons {
         left: 440px;
@@ -1293,12 +1298,12 @@ a {
 
     .items-wrapper .item .discount-percent {
         top: 10px;
-        right: 10px!important;
+        right: 10px !important;
         bottom: 25px;
         transform: scale(0.8, 0.8);
     }
 
-    .items-wrapper .item .badges{
+    .items-wrapper .item .badges {
         top: 52px;
     }
 }
