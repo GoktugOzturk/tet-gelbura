@@ -1240,6 +1240,7 @@ a {
 
     .mm-panel .dropdown-menu .divider {
         height: 0;
+        margin: 0;
     }
 
     .mm-panel .dropdown-toggle {
