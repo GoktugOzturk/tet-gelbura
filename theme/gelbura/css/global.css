@@ -1005,6 +1005,10 @@ a {
     width: 100%;
 }
 
+.navbar-nav .mm-listview li {
+    width: 100%;
+}
+
 .page-title {
     font-size: 29px;
     font-weight: bold;
@@ -1099,6 +1103,12 @@ a {
     margin-right: 0;
 }
 
+#thumbnailCarousel {
+    height: 350px;
+    overflow: hidden;
+    min-width: 66px;
+}
+
 @media (min-width: 550px) {
     .mm-opening #mobile-menu-buttons {
         left: 440px;
@@ -1137,6 +1147,14 @@ a {
 @media only screen and (max-width: 992px) {
     .items-wrapper.horizontal-items .item .reviews {
         display: none
+    }
+
+    .sprite.user {
+        display: none;
+    }
+
+    .mm-listview li {
+        width: 100%;
     }
 
     #banks {
@@ -1195,7 +1213,7 @@ a {
     }
 
     .fix-height-items .item {
-        height: 440px;
+        min-height: 440px;
     }
 
     .items-wrapper .item {
@@ -1216,11 +1234,6 @@ a {
         top: -37px;
     }
 
-    .items-wrapper .item .discount-percent {
-        bottom: 25px;
-        transform: scale(0.8, 0.8);
-    }
-
     .items-wrapper .item .price {
         font-size: 20px;
     }
@@ -1234,7 +1247,7 @@ a {
     }
 
     .fix-height-items .item {
-        height: 260px;
+        min-height: 260px;
     }
 
     .items-wrapper .item {
@@ -1270,11 +1283,22 @@ a {
     }
 
     .slider .owl-dots {
-        display: none;
+        display: none !important;
     }
 
     .sprite.slide-prev,
     .sprite.slide-next {
         transform: scale(0.5);
+    }
+
+    .items-wrapper .item .discount-percent {
+        top: 10px;
+        right: 10px!important;
+        bottom: 25px;
+        transform: scale(0.8, 0.8);
+    }
+
+    .items-wrapper .item .badges{
+        top: 52px;
     }
 }
