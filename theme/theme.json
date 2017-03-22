@@ -24,7 +24,7 @@
       "description": "Anasayfa Kayan Slider",
       "group": "Home",
       "type": "Banner",
-      "width": 1140,
+      "width": 1340,
       "limit": 10,
       "sort_by": "Order"
     },
