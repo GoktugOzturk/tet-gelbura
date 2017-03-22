@@ -1224,6 +1224,32 @@ a {
     .items-wrapper .item {
         min-height: 315px;
     }
+
+    .mm-panel .dropdown-menu {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        position: static;
+        background: none;
+        float: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .mm-panel .dropdown-menu .divider {
+        height: 0;
+    }
+
+    .mm-panel .dropdown-toggle {
+        background: none;
+    }
+
+    .mm-panel .dropdown-toggle .caret {
+        display: none;
+
+    }
 }
 
 @media only screen and (max-width: 767px) {
