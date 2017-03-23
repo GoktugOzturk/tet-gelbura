@@ -1112,6 +1112,7 @@ a {
 .social-wrapper li a {
     width: 32px;
     height: 30px;
+    display: block;
 }
 
 @media (min-width: 550px) {
@@ -1150,6 +1151,10 @@ a {
 }
 
 @media only screen and (max-width: 992px) {
+    #thumbnailCarousel {
+        height: 68px
+    }
+
     .items-wrapper.horizontal-items .item .reviews {
         display: none
     }
