@@ -185,88 +185,93 @@
                     </div>
                 <? } ?>
             <? } ?>
-            <? if ($hasVariants) { ?>
-                <form role="form" action="<?= $mainProductUrl ?>" method="POST" id="formVariant" data-rel="ajax" data-callback="propertyFormCallback">
-                    <? foreach ($variantProperties as $propertyId => $propertyData) { ?>
-                        <div class="product-row">
-                            <div class="product-options">
-                                <input type="hidden" name="property[<?= $propertyId ?>]" value="<?= $propertyData['selected'] ?>">
-                                <label><?= $propertyData['name'] ?></label>
-                                <ul class="nav">
-                                    <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
-                                        <li <?= ($propertyData['selected'] == $optionId ? 'class="active"' : '') ?> id="property-<?= $propertyId ?>-<?= $optionId ?>"><a
-                                                    href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionData['name'] ?></a>
-                                            <span class="price"><?= icms::format_money($optionData['price']) ?></span>
-                                        </li>
-                                    <? } ?>
-                                </ul>
+            <div id="productData">
+                <? if ($hasVariants) { ?>
+                    <form role="form" action="<?= $mainProductUrl ?>" method="POST" id="formVariant" data-rel="ajax" data-callback="propertyFormCallback">
+                        <? foreach ($variantProperties as $propertyId => $propertyData) { ?>
+                            <div class="product-row">
+                                <div class="product-options">
+                                    <input type="hidden" name="property[<?= $propertyId ?>]" value="<?= $propertyData['selected'] ?>">
+                                    <label><?= $propertyData['name'] ?></label>
+                                    <ul class="nav">
+                                        <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
+                                            <li <?= ($propertyData['selected'] == $optionId ? 'class="active"' : '') ?> id="property-<?= $propertyId ?>-<?= $optionId ?>"><a
+                                                        href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionData['name'] ?>
+                                                    <? if ($optionData['price'] != $obProduct->getSalePrice()) { ?>
+                                                        <span class="price"><?= icms::format_money($optionData['price']) ?></span>
+                                                    <? } ?>
+                                                </a>
+                                            </li>
+                                        <? } ?>
+                                    </ul>
+                                </div>
                             </div>
+                        <? } ?>
+                    </form>
+                <? } ?>
+                <? if ($obProduct->is_saleable && $maxInstallmentCount > 1) { ?>
+                    <div class="product-row">
+                        <div class="product-instalment">
+                            <?= icms::format_money($minInstallmentAmount) ?>'den başlayan taksit seçenekleri
                         </div>
-                    <? } ?>
-                </form>
-            <? } ?>
-            <? if ($obProduct->is_saleable && $maxInstallmentCount > 1) { ?>
-                <div class="product-row">
-                    <div class="product-instalment">
-                        <?= icms::format_money($minInstallmentAmount) ?>'den başlayan taksit seçenekleri
-                    </div>
-                </div>
-            <? } ?>
-            <? if ($obProduct->hasBadge(ob_product::BADGE_NEW) || $obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
-                <div class="product-row">
-                    <div class="product-mid-badges">
-                        <? if ($obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
-                            <div class="pull-left ml10">
-                                <span class="sprite sprite-product chance"></span> Yeni Ürün
-                            </div>
-                        <? } ?>
-                        <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
-                            <div class="pull-left ml10">
-                                <span class="sprite sprite-product fast-cargo"></span>
-                                <?= ($obProduct->warehouse_stock <= 5 ? 'Son ' . $obProduct->warehouse_stock . ' Ürün' : 'Hızlı Kargo') ?>
-                            </div>
-                        <? } ?>
-                        <? if (false) { ?>
-                            <div class="pull-left ml10">
-                                <span class="sprite sprite-product outlet"></span> Outlet Ürün
-                            </div>
-                        <? } ?>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            <? } ?>
-            <div class="product-row">
-                <? if ($obProduct->is_saleable) { ?>
-                    <div class="product-piece">
-                        <label for="productQuantity">ÜRÜN ADETİ</label><br>
-                        <div class="btn-group" role="group" aria-label="...">
-                            <button onclick="quantity('#productQuantity','down')" type="button" class="btn btn-default">-</button>
-                            <input name="quantity" id="productQuantity" class="btn btn-default" value="1" type="text" min="1" max="<?= $obProduct->saleableProductCount() ?>"
-                                    onblur="quantity($(this))">
-                            <button onclick="quantity('#productQuantity','up')" type="button" class="btn btn-default">+</button>
-                        </div>
-                        <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
-                        <input type="hidden" id="variantType" value="<?= $obProduct->variant_type ?>"/>
-                        <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
-                    </div>
-                    <a href="javascript:;" class="add-to-cart btn btn-default btn-lg"
-                            onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
-                        + Sepete Ekle</a>
-                    <div class="clearfix"></div>
-                    <p class="cargo-info">Bu ürün tahmini <?= $obProduct->leadTime() ?> iş gününde kargoya teslim edilir.</p>
-                    <div class="clearfix"></div>
-                <? } else { ?>
-                    <div class="stockAlertBox">
-                        Bu ürün geçici olarak temin edilemiyor.
-                    </div>
-                    <div class="detailsAreaCart">
-                        <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
-                        <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
-                        <a href="javascript:" class="stockReminder acc-btn" onclick="addStockAlert($('#productId').val())" role="button">
-                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Gelince Haber Ver
-                        </a>
                     </div>
                 <? } ?>
+                <? if ($obProduct->hasBadge(ob_product::BADGE_NEW) || $obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                    <div class="product-row">
+                        <div class="product-mid-badges">
+                            <? if ($obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
+                                <div class="pull-left ml10">
+                                    <span class="sprite sprite-product chance"></span> Yeni Ürün
+                                </div>
+                            <? } ?>
+                            <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                                <div class="pull-left ml10">
+                                    <span class="sprite sprite-product fast-cargo"></span>
+                                    <?= ($obProduct->warehouse_stock <= 5 ? 'Son ' . $obProduct->warehouse_stock . ' Ürün' : 'Hızlı Kargo') ?>
+                                </div>
+                            <? } ?>
+                            <? if (false) { ?>
+                                <div class="pull-left ml10">
+                                    <span class="sprite sprite-product outlet"></span> Outlet Ürün
+                                </div>
+                            <? } ?>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                <? } ?>
+                <div class="product-row">
+                    <? if ($obProduct->is_saleable) { ?>
+                        <div class="product-piece">
+                            <label for="productQuantity">ÜRÜN ADETİ</label><br>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button onclick="quantity('#productQuantity','down')" type="button" class="btn btn-default">-</button>
+                                <input name="quantity" id="productQuantity" class="btn btn-default" value="1" type="text" min="1" max="<?= $obProduct->saleableProductCount() ?>"
+                                        onblur="quantity($(this))">
+                                <button onclick="quantity('#productQuantity','up')" type="button" class="btn btn-default">+</button>
+                            </div>
+                            <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
+                            <input type="hidden" id="variantType" value="<?= $obProduct->variant_type ?>"/>
+                            <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
+                        </div>
+                        <a href="javascript:" class="add-to-cart btn btn-default btn-lg"
+                                onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
+                            + Sepete Ekle</a>
+                        <div class="clearfix"></div>
+                        <p class="cargo-info">Bu ürün tahmini <?= $obProduct->leadTime() ?> iş gününde kargoya teslim edilir.</p>
+                        <div class="clearfix"></div>
+                    <? } else { ?>
+                        <div class="stockAlertBox">
+                            Bu ürün geçici olarak temin edilemiyor.
+                        </div>
+                        <div class="detailsAreaCart">
+                            <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
+                            <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
+                            <a href="javascript:" class="stockReminder acc-btn" onclick="addStockAlert($('#productId').val())" role="button">
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Gelince Haber Ver
+                            </a>
+                        </div>
+                    <? } ?>
+                </div>
             </div>
         </div>
         <?= \TeknoETicaret\Widget\Block::addBlock('productInfo',

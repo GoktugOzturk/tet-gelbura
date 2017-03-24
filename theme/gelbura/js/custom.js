@@ -2,21 +2,20 @@ function fitHeight(firstItem, secondItem) {
     if ($(window).innerWidth() > 767) {
         var firstItemH = $(firstItem).outerHeight();
         var secondItemH = $(secondItem).outerHeight();
-        if(firstItem > secondItem){
-            $(secondItem).css("height", firstItemH+ "px");
+        if (firstItemH > secondItemH) {
+            $(secondItem).css("min-height", firstItemH + "px");
         } else {
-            $(firstItem).css("height", secondItemH+ "px");
+            $(firstItem).css("min-height", secondItemH + "px");
         }
     } else {
-        $(firstItem).css("height", "auto");
-        $(secondItem).css("height", "auto");
+        $(firstItem).css("min-height", "auto");
+        $(secondItem).css("min-height", "auto");
     }
 }
 $(function () {
-    $(window).on('scroll resize load', function () {
+    $(window).on('oasis.resize', function () {
         $("#menu-hover").height($("body").innerHeight());
-        fitHeight(".product-details-container", ".product-image-wrapper");
-    })
+    });
     if ($(window).innerWidth() > 767) {
         $('.dropdown-opener').hover(function () {
             $('#menu-hover').addClass("active");
@@ -39,8 +38,6 @@ function initMobileMenu() {
         $("#filter-wrapper").mmenu({"navbar": {"title": "Filtreler"}}, {clone: true});
     }
 }
-
-
 $(function () {
     /* fixed Navbar */
     navbar = $("#navigation");
@@ -74,7 +71,7 @@ $(function () {
         document.body.prepend(mobileMenu[0]);
         /* # Mobile Nav Buttons Offset Fix # */
         var liElements = document.querySelectorAll('.tab-image-block-nav');
-        for($i = 0; $i < "5"; $i++){
+        for ($i = 0; $i < "5"; $i++) {
             console.log(liElements[$i]);
             $(liElements[$i]).find("li:eq(0)").insertAfter($(liElements[$i]).find("li:eq(3)"));
         }

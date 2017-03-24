@@ -211,7 +211,7 @@
 }
 
 .product-options .nav li a:hover,
-.product-options .nav li a.active {
+.product-options .nav li.active a {
     border: 2px solid #EE6A05;
     background: none;
 }
