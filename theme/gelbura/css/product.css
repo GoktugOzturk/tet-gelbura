@@ -478,6 +478,7 @@
     #thumbnailContainer {
         display: inline-block;
         margin-bottom: 15px;
+        float: none;
     }
 
     .product-details li {
