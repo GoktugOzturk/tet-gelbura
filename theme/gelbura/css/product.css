@@ -450,6 +450,53 @@
     display: block;
 }
 
+#comments .commentTitle {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#comments .commentAuthor {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+#comments .commentDate {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+#comments .isCommentHelpful {
+    font-style: italic;
+    font-size: 12px;
+    margin: 15px 0 0 0;
+}
+
+#comments .isCommentHelpful .commentVote {
+    font-style: normal;
+}
+
+#comments .oneComment {
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.stockAlertBox {
+    text-align: center;
+}
+
+.detailsAreaCart {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.stockReminder {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
 @media only screen and (max-width: 1199px) {
     .limited-offers {
         text-align: center;

@@ -402,12 +402,12 @@
                                     </div>
                                     <input type="hidden" name="product" value="<?= $mainProductId ?>"/>
                                     <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
-                                    <button type="submit" class="btn btn-warning mb">Yorumu Gönder</button>
+                                    <button type="submit" class="btn btn-warning btn-orange mb">Yorumu Gönder</button>
                                 </form>
                             </div>
                         <? } else { ?>
                             <div class="col-xs-12 text-center">
-                                <a href="<?= $obProduct->getUrl() . "#tabComments" ?>" class="btn btn-primary mt mb login-required">Yorum yapabilmek için oturum açın</a>
+                                <a href="<?= $obProduct->getUrl() . "#tabComments" ?>" class="btn btn-primary btn-orange mt mb login-required">Yorum yapabilmek için oturum açın</a>
                             </div>
                         <? } ?>
                     </div>
