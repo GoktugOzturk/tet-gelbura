@@ -73,7 +73,7 @@
                         <? foreach ($products as $key => $product) { ?>
                             <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
                                 <a href="<?= $product->getUrl() ?>">
-                                    <img class="image" src="<?= $product->getPhoto("catalog") ?>">
+                                    <img class="image" src="<?= $product->getPhoto("catalog") ?>" srcset="<?= $product->getPhoto("w182h182") ?> 182w, <?= $product->getPhoto("w270h270") ?> 270w, <?= $product->getPhoto("w320h320") ?> 320w, <?= $product->getPhoto("w520h520") ?> 520w, <?= $product->getPhoto("w600h600") ?> 600w">
                                     <h5 class="name"><?= $product->full_name ?></h5>
                                     <? if ($product->is_saleable) { ?>
                                         <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>

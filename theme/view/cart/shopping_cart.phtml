@@ -45,8 +45,9 @@ $coupon = $cart->getCoupon();
                         ?>
                         <tr class="cart-item">
                             <td class="cart-image">
-                                <a href="#">
-                                    <img width="98" src="<?= $obProduct->getPhoto('thumb') ?>">
+                                <a href="<?= $obProduct->getUrl() ?>">
+                                    <img width="98" src="<?= $obProduct->getPhoto('w98h98') ?>"
+                                            srcset="<?= $obProduct->getPhoto('w98h98') ?> 98w, <?= $obProduct->getPhoto('w196h196') ?> 196w">
                                 </a>
                             </td>
                             <td class="cart-description">

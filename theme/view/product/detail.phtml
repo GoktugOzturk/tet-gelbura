@@ -31,14 +31,15 @@
         <div class="block product-image-wrapper">
             <!-- thumbnails -->
             <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12  <?= (count($productPhotos) < 7 ? "noCarousel" : "") ?>" id="thumbnailContainer">
-                <a href="javascript:" onclick="thumbnailCarouselPrev()" class="sprite sliderArrow arrowUp"></a>
+                <a href="javascript:" onclick="thumbnailCarouselPrev(thumbItemCount)" class="sprite sliderArrow arrowUp"></a>
                 <div id="thumbnailCarousel">
                     <? foreach ($productPhotos as $key => $photo) { ?>
-                        <a href="#" class="productThumbImage<?= ($key == 0 ? ' active' : '') ?>" data-image="<?= $photo['normal'] ?>" data-zoom-image="<?= $photo['big'] ?>">
+                        <a href="javascript:" class="productThumbImage<?= ($key == 0 ? ' active' : '') ?>" data-image="<?= $photo['normal'] ?>"
+                                data-zoom-image="<?= $photo['big'] ?>">
                             <img id="gallery" width="59" height="59" src="<?= $photo['thumb'] ?>"/> </a>
                     <? } ?>
                 </div>
-                <a href="javascript:" onclick="thumbnailCarouselNext()" class="sprite sliderArrow arrowDown"></a>
+                <a href="javascript:" onclick="thumbnailCarouselNext(thumbItemCount)" class="sprite sliderArrow arrowDown"></a>
             </div>
             <!-- #thumbnails# -->
             <div class="col-lg-10 col-md-9 col-sm-12">
@@ -48,6 +49,7 @@
                         <img id="activeImage" src="<?= $mainPhoto['normal'] ?>" data-zoom-image="<?= $mainPhoto['big'] ?>"/>
                     </div>
                     <script>
+                        var thumbItemCount = 5;
                         $(function () {
                             function initEZPlus() {
                                 while ($('.zoomWrapper #activeImage').length > 0) {
@@ -66,8 +68,9 @@
                                         scrollZoom: true,
                                         respond: [
                                             {
-                                                range: '100-599',
-                                                enabled: false,
+                                                range: '100-699',
+                                                enabled: true,
+                                                scrollZoom: false,
                                                 showLens: false
                                             }
                                         ]
@@ -77,14 +80,22 @@
                             $(document).on('oasis.resize', function () {
                                 initEZPlus();
                                 fitHeight(".product-details-container", ".product-image-wrapper");
+                                if ($(window).innerWidth() > 767) {
+                                    thumbItemCount = 5;
+                                } else {
+                                    thumbItemCount = 3;
+                                }
                             });
                         });
                     </script>
                 </div><!-- #productImages# -->
             </div><!-- #col# -->
             <div class="share">
-                <div class="share-text">PAYLAŞ</div>
                 <?= implode('', view::getShareIcons($mainProductUrl, 'sprite')) ?>
+                <? if (session::isStaff()) { ?>
+                    <a title="Ürünü Düzenle" data-toggle="tooltip" data-placement="left" target="_blank" style="font-size:18px"
+                            href="<?= app::getUrl(app::APP_TAG_OASIS, 'http') . "/product/summary/" . $obProduct->product_id ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                <? } ?>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -285,7 +296,7 @@
                 <li><a href="#installment" role="tab" data-toggle="tab" data-url="/product/get_installment_options/<?= $mainProductId ?>"><span
                                 class="sprite sprite-details"></span>TAKSİT SEÇENEKLERİ</a></li>
                 <li><a href="#warranty" role="tab" data-toggle="tab" data-url="/product/get_return_text"><span class="sprite sprite-details"></span>GARANTİ VE İADE</a></li>
-                <li><a href="#review" role="tab" data-toggle="tab"><span class="sprite sprite-details"></span>ÜRÜN İNCELEMESİ</a></li>
+                <? /* <li><a href="#review" role="tab" data-toggle="tab"><span class="sprite sprite-details"></span>ÜRÜN İNCELEMESİ</a></li> */ ?>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="product-info">
@@ -403,7 +414,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="installment">TAKSİT SEÇENEKLERİ</div>
                 <div role="tabpanel" class="tab-pane" id="warranty">GARANTİ VE İADE</div>
-                <div role="tabpanel" class="tab-pane" id="review">ÜRÜN İNCELEMESİ</div>
+                <? /* <div role="tabpanel" class="tab-pane" id="review">ÜRÜN İNCELEMESİ</div> */ ?>
             </div>
         </div>
     </div>

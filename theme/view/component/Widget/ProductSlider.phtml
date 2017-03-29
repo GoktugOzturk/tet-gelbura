@@ -17,20 +17,24 @@
 </div>
 <script>
     $(function () {
-        $('#<?=$id?> .items').owlCarousel({
-            responsiveClass: true,
-            nav: true,
-            responsive: {
-                0: {items: 1, nav: false},
-                481: {items: 3},
-                800: {items: 4},
-                1000: {items: 5}
-            },
-            responsiveBaseElement: "#<?= $id ?>",
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            margin: 30,
-            navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
-        });
+        $('#<?=$id?> .items')
+            .on('initialized.owl.carousel', function () {
+                $(this).find('.item').show();
+            })
+            .owlCarousel({
+                responsiveClass: true,
+                nav: true,
+                responsive: {
+                    0: {items: 1, nav: false},
+                    481: {items: 3},
+                    800: {items: 4},
+                    1000: {items: 5}
+                },
+                responsiveBaseElement: "#<?= $id ?>",
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                margin: 30,
+                navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
+            });
     });
 </script>

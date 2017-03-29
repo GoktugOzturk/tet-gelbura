@@ -62,7 +62,7 @@ $(function () {
     });
     if ($(window).innerWidth() < 1000) {
         /* Mobile Collapse */
-        $("#home-tab-1 li").removeClass("active");
+        $("#home-tab-1").find("li").removeClass("active");
         $("#one-cikanlar-collapse").removeClass("in");
         /* # Mobile Collapse #*/
         initMobileMenu();
@@ -70,10 +70,8 @@ $(function () {
         var mobileMenu = $("#mobile-menu-buttons").clone();
         document.body.prepend(mobileMenu[0]);
         /* # Mobile Nav Buttons Offset Fix # */
-        var liElements = document.querySelectorAll('.tab-image-block-nav');
-        for ($i = 0; $i < "5"; $i++) {
-            console.log(liElements[$i]);
-            $(liElements[$i]).find("li:eq(0)").insertAfter($(liElements[$i]).find("li:eq(3)"));
-        }
+        $('.tab-image-block-nav').each(function () {
+            $(this).find("li:eq(0)").insertAfter($(this).find("li:eq(3)"));
+        });
     }
 });

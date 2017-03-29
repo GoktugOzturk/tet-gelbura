@@ -743,7 +743,7 @@ a {
 
 #menu-hover {
     z-index: -1;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
@@ -1115,6 +1115,10 @@ a {
     display: block;
 }
 
+.product-slider .item{
+    display: none;
+}
+
 @media (min-width: 550px) {
     .mm-opening #mobile-menu-buttons {
         left: 440px;
@@ -1187,7 +1191,7 @@ a {
 
     #mobile-menu-buttons {
         position: fixed;
-        z-index: 100;
+        z-index: 1000;
         top: 0;
         left: 0;
         right: 0;
@@ -1288,7 +1292,7 @@ a {
     }
 
     .items-wrapper .item {
-        min-height: 280px;
+        min-height: 300px;
     }
 
     .product-price {

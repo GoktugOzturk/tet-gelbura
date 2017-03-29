@@ -5,7 +5,7 @@
 ?>
 <a href="<?= $product->obProduct->getUrl() ?>" data-id="<?= $product->obProduct->product_id ?>" data-name="<?= htmlspecialchars($product->obProduct->product_name) ?>"
         data-url="<?= $product->obProduct->getUrl($product->urlParams) ?>">
-    <img class="image" src="<?= $product->obProduct->getPhoto("catalog") ?>" srcset="<?= $product->obProduct->getPhoto("w182h182") ?> w182, <?= $product->obProduct->getPhoto("w260h260") ?> w260, <?= $product->obProduct->getPhoto("w520h520") ?> w520">
+    <img class="image" src="<?= $product->obProduct->getPhoto("catalog") ?>" srcset="<?= $product->obProduct->getPhoto("w182h182") ?> 182w, <?= $product->obProduct->getPhoto("w270h270") ?> 270w, <?= $product->obProduct->getPhoto("w320h320") ?> 320w, <?= $product->obProduct->getPhoto("w520h520") ?> 520w, <?= $product->obProduct->getPhoto("w600h600") ?> 600w">
     <? if ($product->showName) { ?>
         <h5 class="name">
             <? if ($product->showBrand) { ?>
