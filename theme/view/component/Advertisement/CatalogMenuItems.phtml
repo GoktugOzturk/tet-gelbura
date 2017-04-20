@@ -9,7 +9,7 @@
         <? foreach ($advertisements as $advertisement) { ?>
             <li>
                 <a <?= (!empty($advertisement->adv_target) ? 'href="' . $advertisement->adv_target . '"' : '') ?>><img src="<?= image::getBannerUrl($advertisement) ?>"
-                            class="img-responsive"></a>
+                            class="img-responsive" alt="<?= htmlspecialchars($advertisement->adv_text) ?>"></a>
             </li>
         <? } ?>
     </ul>

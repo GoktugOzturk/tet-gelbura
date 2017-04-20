@@ -113,10 +113,14 @@ a:hover {
 /* #header# */
 /* navigation */
 
+#nav-placeholder {
+    min-height: 57px;
+}
+
 #navigation {
     background: #EE6A05;
     border-bottom: 5px solid #FFC70B;
-    min-height: 50px;
+    min-height: 57px;
     z-index: 1000;
 }
 
@@ -433,6 +437,15 @@ a {
     width: 100%;
 }
 
+.items-wrapper .item .itemInfo {
+    min-height: 120px;
+}
+
+.items-wrapper .item .priceBox {
+    position: relative;
+    min-height: 50px;
+}
+
 .items-wrapper .item .old-price {
     text-decoration: line-through;
     color: #707070;
@@ -463,7 +476,7 @@ a {
     color: #333;
     position: absolute;
     right: 0;
-    bottom: 15px;
+    bottom: 0;
     background: #FFC100;
     width: 49px;
     height: 47px;
@@ -667,8 +680,7 @@ a {
 .items-wrapper.horizontal-items .item .discount-percent {
     position: static;
     float: left;
-    margin: -5px 10px 0 0;
-    transform: scale(0.8);
+    margin: 5px 10px 0 0;
 }
 
 .items-wrapper.horizontal-items .item .old-price {
@@ -1089,7 +1101,7 @@ a {
 }
 
 .fix-height-items .item {
-    height: 320px;
+    min-height: 320px;
 }
 
 #mainSlider,
@@ -1115,8 +1127,27 @@ a {
     display: block;
 }
 
-.product-slider .item{
+.product-slider .item {
     display: none;
+}
+
+.ratio-box {
+    position: relative;
+    height: 0;
+    display: block;
+    width: 100%;
+    /* padding-bottom is calculated and rendered in to HTML */
+}
+
+.ratio-box img,
+.ratio-box iframe,
+.ratio-box video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 @media (min-width: 550px) {
@@ -1333,13 +1364,15 @@ a {
     }
 
     .items-wrapper .item .discount-percent {
-        top: 10px;
-        right: 10px !important;
-        bottom: 25px;
         transform: scale(0.8, 0.8);
+        transform-origin: right bottom;
     }
 
     .items-wrapper .item .badges {
         top: 52px;
+    }
+
+    .items-wrapper.horizontal-items .item {
+        min-height: unset;
     }
 }

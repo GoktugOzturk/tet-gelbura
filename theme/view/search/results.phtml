@@ -73,27 +73,33 @@
                         <? foreach ($products as $key => $product) { ?>
                             <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
                                 <a href="<?= $product->getUrl() ?>">
-                                    <img class="image" src="<?= $product->getPhoto("catalog") ?>" srcset="<?= $product->getPhoto("w182h182") ?> 182w, <?= $product->getPhoto("w270h270") ?> 270w, <?= $product->getPhoto("w320h320") ?> 320w, <?= $product->getPhoto("w520h520") ?> 520w, <?= $product->getPhoto("w600h600") ?> 600w">
-                                    <h5 class="name"><?= $product->full_name ?></h5>
-                                    <? if ($product->is_saleable) { ?>
-                                        <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
-                                        <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>
-                                            <p class="old-price"><?= icms::format_money($product->getBasePrice(), 'TL', true) ?></p>
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image lazyload" alt="<?= $product->full_name ?>"
+                                            data-src="<?= $product->getPhoto("dynamic") ?>" data-sizes="auto" data-widths="[182,190,320,380,520,720]"/>
+                                    <div class="itemInfo">
+                                        <h5 class="name"><?= $product->full_name ?></h5>
+                                        <div class="priceBox">
+                                            <? if ($product->is_saleable) { ?>
+                                                <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
+                                                <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>
+                                                    <p class="old-price"><?= icms::format_money($product->getBasePrice(), 'TL', true) ?></p>
+                                                <? } ?>
+                                            <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
+                                                <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
+                                            <? } ?>
+                                            <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                                                <div class="discount-percent">
+                                                    <span class="discount-icon">%</span><span class="discount-amount"><?= $product->getDiscountPercent() ?></span>
+                                                    <span class="discount-text">i̇ndi̇ri̇m</span>
+                                                </div>
+                                            <? } ?>
+                                        </div>
+                                        <? $rating = $product->getRating(); ?>
+                                        <? if ($rating->getCount() > 0) { ?>
+                                            <div class="rating">
+                                                <div class="stars" data-score="<?= $rating->getScore() ?>" data-readonly="true"></div>
+                                            </div>
                                         <? } ?>
-                                    <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
-                                        <p class="price"><?= icms::format_money($product->getSalePrice(), 'TL', true) ?></p>
-                                    <? } ?>
-                                    <? $rating = $product->getRating(); ?>
-                                    <? if ($rating->getCount() > 0) { ?>
-                                        <div class="rating">
-                                            <div class="stars" data-score="<?= $rating->getScore() ?>" data-readonly="true"></div>
-                                        </div>
-                                    <? } ?>
-                                    <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                                        <div class="discount-percent">
-                                            <span class="discount-icon">%</span><?= $product->getDiscountPercent() ?><span class="discount-text">i̇ndi̇ri̇m</span>
-                                        </div>
-                                    <? } ?>
+                                    </div>
                                     <? if ($product->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
                                         <div class="badge ucretsiz-kargo">
                                             <div class="option">

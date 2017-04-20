@@ -7,7 +7,7 @@
 ?>
 <div id="<?= $id ?>" class="product-slider block">
     <h3 class="block-title"><?= $title ?></h3>
-    <ul class="items">
+    <ul class="owl-carousel items">
         <? foreach ($products as $key => $product) { ?>
             <li class="item">
                 <?= $product->generate() ?>
@@ -22,19 +22,20 @@
                 $(this).find('.item').show();
             })
             .owlCarousel({
-                responsiveClass: true,
                 nav: true,
+                navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                    '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'],
+                responsiveClass: true,
+                responsiveBaseElement: "#<?= $id ?>",
                 responsive: {
                     0: {items: 1, nav: false},
                     481: {items: 3},
                     800: {items: 4},
                     1000: {items: 5}
                 },
-                responsiveBaseElement: "#<?= $id ?>",
-                slideSpeed: 300,
-                paginationSpeed: 400,
                 margin: 30,
-                navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
+                slideSpeed: 300,
+                paginationSpeed: 400
             });
     });
 </script>

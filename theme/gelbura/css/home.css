@@ -212,10 +212,6 @@
     box-sizing: border-box;
 }
 
-.items-wrapper.image-block .item .discount-percent {
-    right: 15px;
-}
-
 .items-nav.cat li:nth-child(1) a {
     background: #F3D0B9;
 }

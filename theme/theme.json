@@ -43,7 +43,15 @@
       "width": 1140,
       "limit": 3,
       "sort_by": "Order"
-    }
+    },
+	"Cart": {
+	  "description": "Sepet sayfasında görünen banner",
+      "group": "Global",
+      "type": "Banner",
+      "width": 1140,
+      "limit": 1,
+      "sort_by": "Order"
+	}
   },
   "blockZones": {
     "footer": {
@@ -75,6 +83,11 @@
       "page": "Category",
       "title": "Kategori Sayfası Ürün Listesinin Altı",
       "description": "Kategori sayfalarında ilgili kategorideki ürünlerden sonra gösterilir"
+    },
+    "cart": {
+      "page": "Cart",
+      "title": "Sepet Sayfası",
+      "description": "Sepet görünümünü özelleştirmenizi sağlar"
     }
   },
   "productPhoto": {

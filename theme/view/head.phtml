@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <?= view::get_header_tags() ?>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com/">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com/">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com/">
+    <link rel="dns-prefetch" href="//<?= app::getUrl(app::APP_TAG_MEDIA, false) ?>/">
     <link rel="shortcut icon" href="/logo/favicon.png" type="image/png"/>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearchdescription.xml" title="<?= app::getName() ?>"/>
     <link href="//fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin-ext" rel="stylesheet" type="text/css">
@@ -13,6 +17,10 @@
     <?= view::load_styles('global') ?>
     <?= view::load_styles() ?>
     <?= view::load_scripts('jQuery') ?>
+    <? if (view::$lazyLoadImages) { ?>
+        <?= view::load_scripts('lazyload') ?>
+        <?= view::load_scripts('lazyload-rias') ?>
+    <? } ?>
     <?= view::load_inline_scripts() ?>
     <!--[if lt IE 9]>
     <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>

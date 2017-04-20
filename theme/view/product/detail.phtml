@@ -93,7 +93,7 @@
             <div class="share">
                 <?= implode('', view::getShareIcons($mainProductUrl, 'sprite')) ?>
                 <? if (session::isStaff()) { ?>
-                    <a title="Ürünü Düzenle" data-toggle="tooltip" data-placement="left" target="_blank" style="font-size:18px"
+                    <a title="Ürünü Düzenle" data-toggle="tooltip" data-placement="bottom" target="_blank" style="font-size:18px"
                             href="<?= app::getUrl(app::APP_TAG_OASIS, 'http') . "/product/summary/" . $obProduct->product_id ?>"><i class="glyphicon glyphicon-edit"></i></a>
                 <? } ?>
             </div>
@@ -111,9 +111,9 @@
                     <? } ?>
                     <div class="product-price pull-right">
                         <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
-                            <div class="item-price-old"><?= icms::format_money($obProduct->getBasePrice(), null) ?> TL</div>
+                            <div class="item-price-old"><?= icms::format_money($obProduct->getBasePrice(), 'TL', true) ?></div>
                         <? } ?>
-                        <?= icms::format_money($obProduct->getSalePrice(), null) ?><span>TL</span>
+                        <?= icms::format_money($obProduct->getSalePrice(), 'TL', true) ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -134,38 +134,16 @@
                             <a href="#comments" onclick="showTab('comments-link')"><span class="sprite comment"></span>Yorum ve Soru
                                 <span id="commentCount">(<?= $reviewCount ?>)</span></a>
                         </div>
-                        <div class="star ml10">
-                            <div class="star">
-                                <div class="productRating" style="cursor: pointer;"></div>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('.productRating').raty({
-                                            score: <?= $rating->getScore() ?>,
-                                            click: function (score) {
-                                                $.post('/product/saveRating', {product_id: '<?=$mainProductId ?>', rating_score: score}, function (data) {
-                                                    if (data.readonly) {
-                                                        $('.productRating').raty({readOnly: true, score: <?= $rating->getScore() ?>});
-                                                    }
-                                                    if (typeof data.message != "undefined") {
-                                                        alert(data.message);
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    });
-                                </script>
-                            </div>
+                        <div class="star">
+                            <div class="productRating" style="cursor: pointer;"></div>
                             <script type="text/javascript">
                                 $(function () {
                                     $('.productRating').raty({
-                                        score: 5,
+                                        score: <?= $rating->getScore() ?>,
                                         click: function (score) {
-                                            $.post('/product/saveRating', {
-                                                product_id: '1701',
-                                                rating_score: score
-                                            }, function (data) {
+                                            $.post('/product/saveRating', {product_id: '<?=$mainProductId ?>', rating_score: score}, function (data) {
                                                 if (data.readonly) {
-                                                    $('.productRating').raty({readOnly: true, score: 5});
+                                                    $('.productRating').raty({readOnly: true, score: <?= $rating->getScore() ?>});
                                                 }
                                                 if (typeof data.message != "undefined") {
                                                     alert(data.message);
@@ -208,8 +186,12 @@
                                         <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
                                             <li <?= ($propertyData['selected'] == $optionId ? 'class="active"' : '') ?> id="property-<?= $propertyId ?>-<?= $optionId ?>"><a
                                                         href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionData['name'] ?>
-                                                    <? if ($optionData['price'] != $obProduct->getSalePrice()) { ?>
-                                                        <span class="price"><?= icms::format_money($optionData['price']) ?></span>
+                                                    <? if (!$propertyData['samePrice']) { ?>
+                                                        <? if ($optionData['saleable']) { ?>
+                                                            <span class="price"><?= icms::format_money($optionData['price']) ?></span>
+                                                        <? } else { ?>
+                                                            <span>TÜKENDİ</span>
+                                                        <? } ?>
                                                     <? } ?>
                                                 </a>
                                             </li>
@@ -277,7 +259,7 @@
                         <div class="detailsAreaCart">
                             <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
                             <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
-                            <a href="javascript:" class="stockReminder acc-btn" onclick="addStockAlert($('#productId').val())" role="button">
+                            <a href="javascript:" class="stockReminder btn-orange" onclick="addStockAlert($('#productId').val())" role="button">
                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Gelince Haber Ver
                             </a>
                         </div>

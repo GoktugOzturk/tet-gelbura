@@ -115,7 +115,7 @@ header {
 
 .product-piece {
     margin: 0 auto;
-    width: 111px;
+    width: 120px;
     height: 50px;
     border: 2px solid #DADADA;
     float: left;
@@ -125,7 +125,7 @@ header {
     color: #B6B6B6;
     font-size: 22px;
     float: left;
-    width: 33px;
+    width: 28px;
     text-align: center;
     margin-top: 5px;
     text-decoration: none;
@@ -142,7 +142,8 @@ header {
     font-size: 23px;
     float: left;
     text-align: center;
-    width: 37px;
+    width: 60px;
+    padding: 6px 4px;
 }
 
 .product-piece div label {
