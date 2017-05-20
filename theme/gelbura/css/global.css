@@ -547,6 +547,10 @@ a {
     border-bottom: 1px solid #D9D9D9;
 }
 
+.items-wrapper .block-title a {
+    color: #555;
+}
+
 .items-wrapper .owl-nav {
     position: absolute;
     right: 0;
