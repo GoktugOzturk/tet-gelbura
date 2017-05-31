@@ -550,6 +550,12 @@
     background: #f3f3f3;
 }
 
+.sprite-question {
+    width: 150px;
+    height: 30px;
+    background-position: -1252px 0;
+}
+
 @media only screen and (max-width: 1199px) {
     .limited-offers {
         text-align: center;

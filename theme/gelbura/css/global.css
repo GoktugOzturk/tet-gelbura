@@ -280,6 +280,10 @@ a {
     margin-left: -10px;
 }
 
+.breadcrumbs a {
+    color: #000;
+}
+
 .breadcrumbs div {
     display: inline-block;
     margin-right: 10px;
@@ -963,6 +967,7 @@ a {
     font-size: 14px;
     font-weight: bold;
     color: #49494A;
+    margin: 2px 5px 0 0;
 }
 
 .comment-link a {
