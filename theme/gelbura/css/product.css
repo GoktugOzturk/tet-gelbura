@@ -473,7 +473,7 @@
 #comments .isCommentHelpful {
     font-style: italic;
     font-size: 12px;
-    margin: 15px 0 0 0;
+    margin: 5px 0 0 0;
 }
 
 #comments .isCommentHelpful .commentVote {
@@ -499,6 +499,55 @@
     padding: 10px;
     display: inline-block;
     border-radius: 4px;
+}
+
+.comment-block-title {
+    color: #ee6a05;
+    font-weight: bold;
+    border-bottom: 1px solid #cfcece;
+}
+
+.author-info {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-right: 30px;
+}
+
+.author-image {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.comment-author {
+    margin-top: 5px;
+}
+
+.comment-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.comment-date {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.personelScore.rating {
+    margin-bottom: 15px;
+}
+
+.oneComment.gelbura .comment-image {
+    background-position: -1157px -90px;
+}
+
+.oneComment.gelbura {
+    border-bottom: 1px solid #e2e2e2;
+    margin: 0 0 15px 50px;
+    padding: 20px;
+    background: #f3f3f3;
 }
 
 @media only screen and (max-width: 1199px) {

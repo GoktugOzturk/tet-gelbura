@@ -5,7 +5,7 @@
 ?>
 <? if ($reviewData->helpful) { ?>
     <div>
-        <h4>FAYDALI YORUMLAR</h4>
+        <h4 class="comment-block-title">FAYDALI YORUMLAR</h4>
         <?
         /** @var product_review_model $review */
         foreach ($reviewData->helpful as $review) {
@@ -19,16 +19,21 @@
                     </div>
                 </div>
                 <div class="clearfix commentAuthor">
-                    <div class="pull-left"><?= icms::uctitle($author->firstname . ' ' . mb_substr($author->surname, 0, 1)) ?>.</div>
+                    <div
+                        class="pull-left"><?= icms::uctitle($author->firstname . ' ' . mb_substr($author->surname, 0, 1)) ?>
+                        .
+                    </div>
                     <div class="pull-right commentDate"><?= icms::format_datetime($review->review_time) ?></div>
                 </div>
                 <p class="commentContent"><?= $review->review_text ?></p>
                 <? if (session::memberId() != $review->member_id) { ?>
                     <div class="mt">
                         <span class="isCommentHelpful">Bu yorumu faydalı buldunuz mu ?</span> &nbsp;
-                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)" data-type="Up" data-id="<?= $review->review_id ?>">
+                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)"
+                           data-type="Up" data-id="<?= $review->review_id ?>">
                             Evet (<?= $review->vote_up_count ?>)</a> &nbsp;
-                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)" data-type="Down" data-id="<?= $review->review_id ?>">
+                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)"
+                           data-type="Down" data-id="<?= $review->review_id ?>">
                             Hayır (<?= $review->vote_down_count ?>)</a>
                     </div>
                 <? } ?>
@@ -38,31 +43,47 @@
 <? } ?>
 <? if ($reviewData->reviews) { ?>
     <div class="clearfix">
-        <h4>SON YORUMLAR</h4>
+        <h4 class="comment-block-title">Bu ürün hakkında yapılan yorum, soru ve cevaplar</h4>
         <?
         /** @var product_review_model $review */
         foreach ($reviewData->reviews as $review) {
             $author = $review->getAuthor();
             ?>
             <div class="oneComment">
-                <div class="clearfix">
-                    <div class="pull-left commentTitle"><?= $review->review_title ?></div>
-                    <div class="pull-right personelScore rating">
-                        <div class="stars" data-score="<?= $review->review_rating ?>"></div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="author-info">
+                            <div class="author-image sprite">
+                            </div>
+                            <div class="comment-author">
+                                <?= icms::uctitle($author->firstname . ' ' . mb_substr($author->surname, 0, 1)) ?>.
+                            </div>
+                        </div>
+                        <div class="comment-title"><?= $review->review_title ?></div>
+                        <p class="comment-content"><?= $review->review_text ?></p>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <div class="personelScore rating">
+                            <div class="stars" data-score="<?= $review->review_rating ?>"></div>
+                        </div>
+                        <div class="comment-date"><?= icms::format_datetime($review->review_time) ?></div>
                     </div>
                 </div>
-                <div class="clearfix commentAuthor">
-                    <div class="pull-left"><?= icms::uctitle($author->firstname . ' ' . mb_substr($author->surname, 0, 1)) ?>.</div>
-                    <div class="pull-right commentDate"><?= icms::format_datetime($review->review_time) ?></div>
-                </div>
-                <p class="commentContent"><?= $review->review_text ?></p>
                 <? if (session::memberId() != $review->member_id) { ?>
-                    <div class="isCommentHelpful mt">
-                        <span>Bu yorumu faydalı buldunuz mu ?</span> &nbsp;
-                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)" data-type="Up" data-id="<?= $review->review_id ?>">
-                            Evet (<?= $review->vote_up_count ?>)</a> &nbsp;
-                        <a href="javascript:" class="btn btn-default btn-xs commentVote" onclick="voteComment(this)" data-type="Down" data-id="<?= $review->review_id ?>">
-                            Hayır (<?= $review->vote_down_count ?>)</a>
+                    <div class="row">
+                        <div class="isCommentHelpful mt">
+                            <div class="col-md-12 text-right">
+                                <span>Bu yorumu faydalı buldunuz mu ?</span> &nbsp;
+                                <a href="javascript:" class="btn btn-default btn-xs commentVote"
+                                   onclick="voteComment(this)"
+                                   data-type="Up" data-id="<?= $review->review_id ?>">
+                                    Evet (<?= $review->vote_up_count ?>)</a> &nbsp;
+                                <a href="javascript:" class="btn btn-default btn-xs commentVote"
+                                   onclick="voteComment(this)"
+                                   data-type="Down" data-id="<?= $review->review_id ?>">
+                                    Hayır (<?= $review->vote_down_count ?>)</a>
+                            </div>
+                        </div>
                     </div>
                 <? } ?>
             </div>
