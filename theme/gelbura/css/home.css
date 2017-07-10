@@ -157,6 +157,14 @@
     background-position: -700px 0;
 }
 
+.home-block-outdoor .category-image {
+    background: #f4993f;
+}
+
+.home-block-outdoor .image-container {
+    background-position: -871px 0;
+}
+
 .tab-image-block-nav {
     margin-left: -32px;
     margin-right: -2px;
