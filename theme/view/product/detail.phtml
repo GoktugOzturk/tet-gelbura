@@ -44,9 +44,8 @@
             <!-- #thumbnails# -->
             <div class="col-lg-10 col-md-9 col-sm-12">
                 <div class="productImages">
-                    <? $mainPhoto = reset($productPhotos); ?>
                     <div id="zoomContainer">
-                        <img id="activeImage" src="<?= $mainPhoto['normal'] ?>" data-zoom-image="<?= $mainPhoto['big'] ?>"/>
+                        <img id="activeImage" src="<?= $obProduct->getPhoto("normal") ?>" data-zoom-image="<?= $obProduct->getPhoto("big") ?>"/>
                     </div>
                     <script>
                         var thumbItemCount = 5;
@@ -109,11 +108,13 @@
                             <span class="discount-icon">%</span><?= $obProduct->getDiscountPercent() ?><span class="discount-text">İNDİRİM</span>
                         </div>
                     <? } ?>
-                    <div class="product-price pull-right">
+                    <div class="pull-right">
                         <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
                             <div class="item-price-old"><?= icms::format_money($obProduct->getBasePrice(), 'TL', true) ?></div>
                         <? } ?>
-                        <?= icms::format_money($obProduct->getSalePrice(), 'TL', true) ?>
+                        <div class="product-price">
+                            <?= icms::format_money($obProduct->getSalePrice(), 'TL', true) ?>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -131,7 +132,7 @@
                     <? } ?>
                     <div class="product-info-right">
                         <div class="comment-link">
-                            <a href="#comments" onclick="showTab('comments-link')"><span class="sprite comment"></span>Yorum ve Soru
+                            <a href="#comments" onclick="showTab('comments')"><span class="sprite comment"></span>Yorum ve Soru
                                 <span id="commentCount">(<?= $reviewCount ?>)</span></a>
                         </div>
                         <div class="star">
@@ -145,7 +146,7 @@
                                                 if (data.readonly) {
                                                     $('.productRating').raty({readOnly: true, score: <?= $rating->getScore() ?>});
                                                 }
-                                                if (typeof data.message != "undefined") {
+                                                if (typeof data.message !== "undefined") {
                                                     alert(data.message);
                                                 }
                                             });
@@ -220,7 +221,7 @@
                             <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
                                 <div class="pull-left ml10">
                                     <span class="sprite sprite-product fast-cargo"></span>
-                                    <?= ($obProduct->warehouse_stock <= 5 ? 'Son ' . $obProduct->warehouse_stock . ' Ürün' : 'Hızlı Kargo') ?>
+                                    <?= (($obProduct->warehouse_stock <= 5 && $obProduct->warehouse_stock > 0) ? 'Son ' . $obProduct->warehouse_stock . ' Ürün' : 'Hızlı Kargo') ?>
                                 </div>
                             <? } ?>
                             <? if (false) { ?>
@@ -229,7 +230,7 @@
                                 </div>
                             <? } ?>
                             <div class="pull-right">
-                                <a href="#comments" onclick="showTab('comments-link')"><span class="sprite sprite-question"></span></a>
+                                <a href="#comments" onclick="showTab('comments')"><span class="sprite sprite-question"></span></a>
                             </div>
                             <div class="clearfix"></div>
                         </div>

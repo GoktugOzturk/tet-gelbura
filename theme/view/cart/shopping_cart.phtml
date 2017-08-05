@@ -17,8 +17,9 @@ $coupon = $cart->getCoupon();
         <li class="col-md-3 col-xs-12">Sipariş Tamamlandı</li>
     </ul>
 </nav>
+<div class="mb30"><?= \TeknoETicaret\Widget\Block::addBlock('cart') ?></div>
+<h1 class="page-title">ALIŞVERİŞ SEPETİNİZ</h1>
 <div class="mb30">
-    <h1 class="page-title">ALIŞVERİŞ SEPETİNİZ</h1>
     <div class="table-responsive">
         <form id="cartUpdate" method="post" action="/cart/update">
             <input type="hidden" name="form" value="cartUpdate"/>
@@ -46,8 +47,9 @@ $coupon = $cart->getCoupon();
                         <tr class="cart-item">
                             <td class="cart-image">
                                 <a href="<?= $obProduct->getUrl() ?>">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image lazyload" alt="<?= $obProduct->full_name ?>"
-                                            data-src="<?= $obProduct->getPhoto("dynamic") ?>" data-sizes="auto" data-widths="[95,190,380]"/>
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image lazyload"
+                                            alt="<?= htmlspecialchars($obProduct->full_name) ?>" data-src="<?= $obProduct->getPhoto("dynamic") ?>" data-sizes="auto"
+                                            data-widths="[95,190,380]"/>
                                 </a>
                             </td>
                             <td class="cart-description">

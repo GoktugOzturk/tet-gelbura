@@ -294,7 +294,7 @@ a {
 
 .sprite {
     display: block;
-    background: url("../img/sprite.png?qrev=1") no-repeat;
+    background: url(/theme/gelbura/img/sprite.png) no-repeat;
 }
 
 .sprite-toolbar {
@@ -491,7 +491,7 @@ a {
     font-weight: bold;
     padding: 11px 0 0 3px;
     display: block;
-    background: url("../img/sprite.png?qrev=1") no-repeat;
+    background: url(/theme/gelbura/img/sprite.png) no-repeat;
     background-position: -238px -158px;
 }
 
@@ -1112,7 +1112,7 @@ a {
 .fix-height-items .item {
     min-height: 320px;
 }
-
+/*
 #mainSlider,
 #mainSlider .col-md-12 {
     padding-left: 0;
@@ -1123,7 +1123,7 @@ a {
     margin-left: 0;
     margin-right: 0;
 }
-
+*/
 #thumbnailCarousel {
     height: 350px;
     overflow: hidden;
@@ -1157,6 +1157,10 @@ a {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+.VadeFarkiYok {
+    font-weight: bold;
 }
 
 @media (min-width: 550px) {
