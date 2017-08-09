@@ -193,6 +193,12 @@ header {
     width: 40%;
 }
 
+.btn-orange.btn-success{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
 @media only screen and (max-width: 500px) {
     .hideAgreementsOnMobile {
         display: none;
