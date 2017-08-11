@@ -18,7 +18,7 @@
       "width": 255,
       "limit": 12,
       "sort_by": "Order",
-	  "global": 1
+      "global": 1
     },
     "HomePageSlider": {
       "description": "Anasayfa Kayan Slider",
@@ -44,14 +44,14 @@
       "limit": 3,
       "sort_by": "Order"
     },
-	"Cart": {
-	  "description": "Sepet sayfasında görünen banner",
-      "group": "Global",
+    "MailSlider": {
+      "description": "Mail şablonundaki büyük banner",
+      "group": "Email",
       "type": "Banner",
-      "width": 1140,
-      "limit": 1,
+      "width": 680,
+      "limit": 3,
       "sort_by": "Order"
-	}
+    }
   },
   "blockZones": {
     "footer": {
@@ -83,11 +83,6 @@
       "page": "Category",
       "title": "Kategori Sayfası Ürün Listesinin Altı",
       "description": "Kategori sayfalarında ilgili kategorideki ürünlerden sonra gösterilir"
-    },
-    "cart": {
-      "page": "Cart",
-      "title": "Sepet Sayfası",
-      "description": "Sepet görünümünü özelleştirmenizi sağlar"
     }
   },
   "productPhoto": {
