@@ -51,6 +51,14 @@
       "width": 680,
       "limit": 3,
       "sort_by": "Order"
+    },
+    "Cart": {
+      "description": "Sepet sayfasında görünen banner",
+      "group": "Global",
+      "type": "Banner",
+      "width": 1140,
+      "limit": 1,
+      "sort_by": "Order"
     }
   },
   "blockZones": {
