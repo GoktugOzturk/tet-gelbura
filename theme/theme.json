@@ -54,7 +54,7 @@
     },
     "Cart": {
       "description": "Sepet sayfasında görünen banner",
-      "group": "Global",
+      "group": "Cart",
       "type": "Banner",
       "width": 1140,
       "limit": 1,
