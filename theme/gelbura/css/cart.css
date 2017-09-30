@@ -193,7 +193,7 @@ header {
     width: 40%;
 }
 
-.btn-orange.btn-success{
+.btn-orange.btn-success {
     color: #fff;
     background-color: #449d44;
     border-color: #398439;
@@ -291,12 +291,96 @@ header {
     padding: 0;
 }
 
+#deliveryOptions li {
+    float: left;
+    margin-left: 15px;
+}
+
 #deliveryOptions button {
     width: 100%;
     text-align: center;
     height: 50px;
+    font-size: 0;
     border-radius: 5px;
     margin-bottom: 10px;
+    background-color: #cdcdcd !important;
+    transition: 0.5s all;
+    border: 0 !important;
+}
+
+#deliveryOptions button:after {
+    content: ' ';
+    display: block;
+    width: 129px;
+    height: 45px;
+    background: url(/theme/gelbura/img/sprite.png) no-repeat;
+    background-position: -1421px -3px;
+    transition: 0.5s all;
+}
+
+#deliveryOptions button:active,
+#deliveryOptions button:focus,
+#deliveryOptions button:hover {
+    background-color: #ea5b0c !important;
+}
+
+#deliveryOptions button.suratkargo:after {
+    background-position: -1421px -1px;
+}
+
+#deliveryOptions button.surat-kargo.btn-success:after,
+#deliveryOptions button.surat-kargo:focus:after,
+#deliveryOptions button.surat-kargo:active:after,
+#deliveryOptions button.surat-kargo:hover:after {
+    background-position: -1421px -50px;
+}
+
+#deliveryOptions button.aras:after {
+    width: 100px;
+    background-position: -1562px -1px;
+}
+
+#deliveryOptions button.aras.btn-success:after,
+#deliveryOptions button.aras:focus:after,
+#deliveryOptions button.aras:active:after,
+#deliveryOptions button.aras:hover:after {
+    background-position: -1562px -50px;
+}
+
+#deliveryOptions button.ups:after {
+    width: 40px;
+    background-position: -1678px -3px;
+}
+
+#deliveryOptions button.ups.btn-success:after,
+#deliveryOptions button.ups:focus:after,
+#deliveryOptions button.ups:active:after,
+#deliveryOptions button.ups:hover:after {
+    background-position: -1678px -55px;
+}
+
+#deliveryOptions button.yurtici-kargo:after {
+    width: 130px;
+    background-position: -1732px -3px;
+}
+
+#deliveryOptions button.yurtici-kargo.btn-success:after,
+#deliveryOptions button.yurtici-kargo:focus:after,
+#deliveryOptions button.yurtici-kargo:active:after,
+#deliveryOptions button.yurtici-kargo:hover:after {
+    background-position: -1732px -53px;
+}
+
+#deliveryOptions button.magaza-teslim:after {
+    width: 115px;
+    background-position: -1871px -3px;
+}
+
+#deliveryOptions button.magaza-teslim.btn-success:after,
+#deliveryOptions button.magaza-teslim:focus:after,
+#deliveryOptions button.magaza-teslim:active:after,
+#deliveryOptions button.magaza-teslim:hover:after {
+    background-position: -1871px -53px
 }
 
 .create-record {
