@@ -318,6 +318,7 @@ header {
     transition: 0.5s all;
 }
 
+#deliveryOptions button.btn-success,
 #deliveryOptions button:active,
 #deliveryOptions button:focus,
 #deliveryOptions button:hover {
