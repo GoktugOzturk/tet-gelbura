@@ -505,6 +505,7 @@
 .comment-block-title {
     color: #ee6a05;
     font-weight: bold;
+    padding-bottom: 10px;
     border-bottom: 1px solid #cfcece;
 }
 
@@ -537,6 +538,10 @@
     text-transform: uppercase;
 }
 
+.comment-content {
+    margin-left: 180px;
+}
+
 .comment-date {
     font-weight: bold;
     font-size: 12px;
@@ -561,6 +566,40 @@
     width: 150px;
     height: 30px;
     background-position: -1252px 0;
+}
+
+.product-last-24-views {
+    position: fixed;
+    width: 190px;
+    bottom: 30px;
+    left: 15px;
+    padding: 15px;
+    background: #6b6b6b;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+.product-last-24-views .glyphicon {
+    font-size: 38px;
+    float: left;
+    margin-right: 10px;
+}
+
+.btn-24-close {
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.btn-24-close .glyphicon {
+    font-size: 14px;
+    margin: 0;
+    float: none;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -713,5 +752,9 @@
         transform: scale(0.7);
         transform-origin: top left;
         position: absolute;
+    }
+
+    .comment-content {
+        margin-left: 0;
     }
 }

@@ -74,4 +74,7 @@ $(function () {
             $(this).find("li:eq(0)").insertAfter($(this).find("li:eq(3)"));
         });
     }
+    $('.btn-24-close').click(function () {
+      $('.product-last-24-views').addClass('hidden');
+    })
 });
