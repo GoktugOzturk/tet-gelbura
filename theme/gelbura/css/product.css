@@ -503,10 +503,10 @@
 }
 
 .comment-block-title {
-    color: #ee6a05;
+    color: #EE6A05;
     font-weight: bold;
     padding-bottom: 10px;
-    border-bottom: 1px solid #cfcece;
+    border-bottom: 1px solid #CFCECE;
 }
 
 .author-info {
@@ -556,10 +556,10 @@
 }
 
 .oneComment.gelbura {
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #E2E2E2;
     margin: 0 0 15px 50px;
     padding: 20px;
-    background: #f3f3f3;
+    background: #F3F3F3;
 }
 
 .sprite-question {
@@ -570,13 +570,19 @@
 
 .product-last-24-views {
     position: fixed;
-    width: 190px;
+    width: 200px;
     bottom: 30px;
     left: 15px;
     padding: 15px;
-    background: #6b6b6b;
+    background: #6B6B6B;
     color: #FFF;
     border-radius: 4px;
+    font-size: 13px;
+    z-index: 1095;
+}
+
+.product-last-24-views strong {
+    color: #FFC70B;
 }
 
 .product-last-24-views .glyphicon {
@@ -587,13 +593,16 @@
 
 .btn-24-close {
     position: absolute;
-    right: -20px;
+    right: -15px;
     top: -10px;
     width: 30px;
     height: 30px;
-    color: #FFF;
     border-radius: 100%;
     padding: 5px;
+    border: 1px solid #666;
+    background: #EEE;
+    color: #999;
+    font-size: 8px;
 }
 
 .btn-24-close .glyphicon {

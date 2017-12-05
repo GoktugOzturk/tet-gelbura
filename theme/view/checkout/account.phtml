@@ -1,6 +1,6 @@
 <?php
 /**
- * @var bool $halfLogin
+ * @var bool   $halfLogin
  * @var string $accountMail
  * @var string $redirectTo
  */
@@ -21,14 +21,9 @@
                 <div class="col-xs-10 col-xs-offset-1">
                     <? if (!$halfLogin) { ?>
                         <div class="loginOptions mb">
-                            <div class="radio"><label> <input type="radio" name="loginOptions" value="loginBox" checked>
-                                    Giriş yap </label></div>
-                            <div class="radio"><label> <input type="radio" name="loginOptions" value="registerBox"> Üye
-                                    ol
-                                </label></div>
-                            <div class="radio "><label> <input type="radio" name="loginOptions" value="guestAccountBox">
-                                    Üye
-                                    olmadan devam et </label></div>
+                            <div class="radio"><label> <input type="radio" name="loginOptions" value="loginBox" checked> Giriş yap </label></div>
+                            <div class="radio"><label> <input type="radio" name="loginOptions" id="loginRegister" value="registerBox"> Üye ol </label></div>
+                            <div class="radio "><label> <input type="radio" name="loginOptions" id="loginGuest" value="guestAccountBox"> Üye olmadan devam et </label></div>
                         </div>
                     <? } ?>
                     <div id="loginBox" class="optionBox">
@@ -39,8 +34,7 @@
                                     <label for="LoginEmail">E-Posta Adresi:</label>
                                     <? if ($halfLogin) { ?>
                                         <div>
-                                            <input type="hidden" name="email"
-                                                   value="<?= $accountMail ?>"><?= $accountMail ?>
+                                            <input type="hidden" name="email" value="<?= $accountMail ?>"><?= $accountMail ?>
                                             <div class="pull-right">( <a href="/member/logout">değiştir</a> )</div>
                                         </div>
                                     <? } else { ?>
@@ -50,17 +44,14 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="LoginPassword">Parola:</label> <input type="password" id="LoginPassword"
-                                                                                      class="form-control"
-                                                                                      name="password">
+                                    <label for="LoginPassword">Parola:</label> <input type="password" id="LoginPassword" class="form-control" name="password">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-6 text-left">
-                                    <button class="btn btn-primary noiseBg submitButton" type="submit">Giriş Yap
-                                    </button>
+                                <div class="col-md-5 col-xs-6 text-left">
+                                    <button class="btn btn-primary noiseBg submitButton" type="submit">Giriş Yap</button>
                                 </div>
-                                <div class="col-xs-6 text-right">
+                                <div class="col-md-7 col-xs-6 text-right">
                                     <a href="/member/forgot_password">Parolamı Unuttum</a>
                                 </div>
                             </div>
@@ -68,76 +59,57 @@
                     </div>
                     <? if (!$halfLogin) { ?>
                         <div id="registerBox" class="optionBox">
-                            <form method="post" action="/ajax/signup" role="form" id="registerForm"
-                                  class="form-horizontal"
-                                  novalidate="novalidate">
+                            <form method="post" action="/ajax/signup" role="form" id="registerForm" class="form-horizontal" novalidate="novalidate">
                                 <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
                                 <div class="form-group">
                                     <div class="col-xs-12 col-md-6">
-                                        <label for="SignupName">Adınız:</label> <input type="text" id="SignupName"
-                                                                                       class="form-control"
-                                                                                       name="firstname">
+                                        <label for="SignupName">Adınız:</label> <input type="text" id="SignupName" class="form-control" name="firstname">
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <label for="SignupSurname">Soyadınız:</label> <input type="text"
-                                                                                             id="SignupSurname"
-                                                                                             class="form-control"
-                                                                                             name="surname">
+                                        <label for="SignupSurname">Soyadınız:</label> <input type="text" id="SignupSurname" class="form-control" name="surname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <label for="SignupEmail">E-Posta Adresi:</label>
-                                        <input type="email" id="SignupEmail" class="form-control"
-                                               onkeypress="return disableSpaceKey(event);" name="email">
+                                        <label for="SignupEmail1">E-Posta Adresi:</label>
+                                        <input type="email" id="SignupEmail1" class="form-control" onkeypress="return disableSpaceKey(event);" name="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <label for="SignupPassword">Parola:</label> <input type="password"
-                                                                                           id="SignupPassword"
-                                                                                           class="form-control"
-                                                                                           name="passwd">
+                                        <label for="SignupPassword">Parola:</label> <input type="password" id="SignupPassword" class="form-control" name="passwd">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <div class="checkbox">
-                                            <label> <input type="checkbox" checked="checked" name="subscription"
-                                                           id="subscription">Önemli kampanyalardan e-posta ile haberdar
-                                                olmak
+                                            <label> <input type="checkbox" checked="checked" name="subscription" id="subscription">Önemli kampanyalardan e-posta ile haberdar olmak
                                                 istiyorum.</label>
                                         </div>
-                                        <div class="mt">
-                                            <button class="btn btn-primary noiseBg submitButton" type="submit">Hesabımı
-                                                Oluştur
-                                            </button>
+                                        <div class="mt15">
+                                            <button class="btn btn-primary noiseBg submitButton" type="submit">Hesabımı Oluştur</button>
                                         </div>
-                                        <div class="mt">
-                                            Hesap oluşturarak <a target="_blank" href="/uyelik-sozlesmesi" class="b">üyelik
-                                                sözleşmesini</a> okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.
+                                        <div class="mt15">
+                                            Hesap oluşturarak <a target="_blank" href="/uyelik-sozlesmesi" class="b">üyelik sözleşmesini</a> okuduğunuzu ve kabul ettiğinizi
+                                            onaylıyorsunuz.
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div id="guestAccountBox" class="optionBox">
-                            <form method="post" action="/ajax/guestAccount" role="form" id="guestAccountForm"
-                                  class="form-horizontal" novalidate="novalidate">
+                            <form method="post" action="/ajax/guestAccount" role="form" id="guestAccountForm" class="form-horizontal" novalidate="novalidate">
                                 <input type="hidden" name="redirectTo" value="<?= $redirectTo ?>">
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <label for="SignupEmail">E-Posta Adresi:</label>
-                                        <input type="email" id="SignupEmail" class="form-control"
-                                               onkeypress="return disableSpaceKey(event);" name="email">
+                                        <label for="SignupEmail2">E-Posta Adresi:</label>
+                                        <input type="email" id="SignupEmail2" class="form-control" onkeypress="return disableSpaceKey(event);" name="email">
                                     </div>
                                 </div>
-                                <div class="mt">
-                                    Sipariş bilgileriniz bu adrese gönderilecektir.<br>İsterseniz alışverişinizin
-                                    sonunda
-                                    hesap oluşturabilirsiniz.
+                                <div class="mt15">
+                                    Sipariş bilgileriniz bu e-posta adresine gönderilecektir.
                                 </div>
-                                <div class="mt">
+                                <div class="mt15">
                                     <button class="btn btn-primary noiseBg submitButton" type="submit">Devam Et</button>
                                 </div>
                             </form>
@@ -159,20 +131,19 @@
         </script>
     </div>
     <div class="col-md-8">
-        <table class="table table-bordered fixed-table">
+        <table class="table table-bordered fixed-table membership-benefits">
             <thead>
             <tr>
-                <th colspan="3" class="uye-avantajlari-baslik">Gelbura.com’a Hemen Üye Ol 15 TL Hediye Çeki Kazan!</th>
+                <th colspan="3" class="uye-avantajlari-baslik">Gelbura.com'a Hemen Üye Ol, 15 TL Hediye Çeki Kazan!</th>
             </tr>
             <tr>
                 <th rowspan="2" style="font-size: 24px;">ÜYE OLMANIN AVANTAJLARI!</th>
-                <th colspan="2">Gelbura.com’a üye olup avantajlardan faydalanabilir veya misafir olarak üye olmadan
-                    alışverişe devam edebilirsiniz.
+                <th colspan="2">Gelbura.com’a üye olup avantajlardan faydalanabilir veya misafir olarak üye olmadan alışverişe devam edebilirsiniz.
                 </th>
             </tr>
             <tr>
                 <th class="uye-avantajlari-altbaslik">Misafir</th>
-                <th class="uye-avantajlari-altbaslik2">YENİ ÜYE</th>
+                <th class="uye-avantajlari-altbaslik2">Üye</th>
             </tr>
             </thead>
             <tbody>
@@ -180,7 +151,6 @@
                 <td>Güvenli Ödeme Sistemi</td>
                 <td><span class="sprite ok"></span></td>
                 <td><span class="sprite ok"></span></td>
-                </td>
             </tr>
             <tr>
                 <td>Hızlı Alışveriş</td>
@@ -211,10 +181,12 @@
                 <td>
                 </td>
                 <td>
-                    <button class="btn btn-dark-grey btn-100 btn-lg submitButton" type="submit">Misafir Olarak Devam et</button>
+                    <button class="btn btn-dark-grey btn-100 btn-lg submitButton" type="button" onclick="$('#loginGuest').click();$('#SignupEmail2').focus()">
+                        Misafir olarak devam et
+                    </button>
                 </td>
                 <td>
-                    <button class="btn btn-grd-green btn-100 btn-lg submitButton" type="submit">Giriş Yap</button>
+                    <button class="btn btn-grd-green btn-100 btn-lg submitButton" type="button" onclick="$('#loginRegister').click();$('#SignupName').focus()">Üye ol</button>
                 </td>
             </tr>
             </tbody>

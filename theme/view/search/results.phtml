@@ -45,6 +45,9 @@
         </div>
     </div>
     <div class="col-md-9 mb30">
+        <? if (!isset($qs) && isset($category)) { ?>
+            <?= \TeknoETicaret\Widget\Block::addBlock('categoryProductTop', ['categoryId' => $category->category_id]) ?>
+        <? } ?>
         <a id="filtreler-btn" href="#filter-wrapper">Filtrele</a>
         <? if (!isset($hideListTitle) || !$hideListTitle) { ?>
             <ul class="nav product-filter">

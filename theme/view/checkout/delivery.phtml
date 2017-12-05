@@ -23,7 +23,7 @@
                 <ul id="deliveryOptions" class="row">
                     <? foreach ($deliveryOptionList as $deliveryOptionId => $deliveryOptionName) { ?>
                         <li class="" style="list-style-type: none;">
-                            <button class="btn btn-orange" data-cargo="<?= $deliveryOptionId ?>"><?= $deliveryOptionName ?></button>
+                            <button class="btn btn-orange <?= icms::createSlug($deliveryOptionName) ?>" data-cargo="<?= $deliveryOptionId ?>"><?= $deliveryOptionName ?></button>
                         </li>
                     <? } ?>
                 </ul>

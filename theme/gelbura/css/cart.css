@@ -194,8 +194,8 @@ header {
 }
 
 .btn-orange.btn-success {
-    color: #fff;
-    background-color: #449d44;
+    color: #FFF;
+    background-color: #449D44;
     border-color: #398439;
 }
 
@@ -256,6 +256,11 @@ header {
     margin: 0 0 50px auto;
 }
 
+.membership-benefits {
+    background-color: #FFF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 /* Checkout Adımlar: Adres Seçimi */
 .addressView {
     white-space: normal;
@@ -303,7 +308,7 @@ header {
     font-size: 0;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #cdcdcd !important;
+    background-color: #CDCDCD !important;
     transition: 0.5s all;
     border: 0 !important;
 }
@@ -322,10 +327,10 @@ header {
 #deliveryOptions button:active,
 #deliveryOptions button:focus,
 #deliveryOptions button:hover {
-    background-color: #ea5b0c !important;
+    background-color: #EA5B0C !important;
 }
 
-#deliveryOptions button.suratkargo:after {
+#deliveryOptions button.surat-kargo:after {
     background-position: -1421px -1px;
 }
 
@@ -336,27 +341,27 @@ header {
     background-position: -1421px -50px;
 }
 
-#deliveryOptions button.aras:after {
+#deliveryOptions button.aras-kargo:after {
     width: 100px;
     background-position: -1562px -1px;
 }
 
-#deliveryOptions button.aras.btn-success:after,
-#deliveryOptions button.aras:focus:after,
-#deliveryOptions button.aras:active:after,
-#deliveryOptions button.aras:hover:after {
+#deliveryOptions button.aras-kargo.btn-success:after,
+#deliveryOptions button.aras-kargo:focus:after,
+#deliveryOptions button.aras-kargo:active:after,
+#deliveryOptions button.aras-kargo:hover:after {
     background-position: -1562px -50px;
 }
 
-#deliveryOptions button.ups:after {
+#deliveryOptions button.ups-kargo:after {
     width: 40px;
     background-position: -1678px -3px;
 }
 
-#deliveryOptions button.ups.btn-success:after,
-#deliveryOptions button.ups:focus:after,
-#deliveryOptions button.ups:active:after,
-#deliveryOptions button.ups:hover:after {
+#deliveryOptions button.ups-kargo.btn-success:after,
+#deliveryOptions button.ups-kargo:focus:after,
+#deliveryOptions button.ups-kargo:active:after,
+#deliveryOptions button.ups-kargo:hover:after {
     background-position: -1678px -55px;
 }
 
@@ -372,15 +377,15 @@ header {
     background-position: -1732px -53px;
 }
 
-#deliveryOptions button.magaza-teslim:after {
+#deliveryOptions button.magazadan-teslim:after {
     width: 115px;
     background-position: -1871px -3px;
 }
 
-#deliveryOptions button.magaza-teslim.btn-success:after,
-#deliveryOptions button.magaza-teslim:focus:after,
-#deliveryOptions button.magaza-teslim:active:after,
-#deliveryOptions button.magaza-teslim:hover:after {
+#deliveryOptions button.magazadan-teslim.btn-success:after,
+#deliveryOptions button.magazadan-teslim:focus:after,
+#deliveryOptions button.magazadan-teslim:active:after,
+#deliveryOptions button.magazadan-teslim:hover:after {
     background-position: -1871px -53px
 }
 
