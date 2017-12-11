@@ -1206,6 +1206,10 @@ a {
     text-align: center;
 }
 
+.uye-avantajlari-altbaslik3 {
+    font-size: 24px;
+}
+
 .btn-100 {
     width: 100%;
 }
@@ -1448,5 +1452,13 @@ a {
 
     .items-wrapper.horizontal-items .item {
         min-height: unset;
+    }
+
+    .ws-unset-xs {
+        white-space: unset;
+    }
+
+    .uye-avantajlari-altbaslik3 {
+        font-size: 14px;
     }
 }
