@@ -611,6 +611,71 @@
     float: none;
 }
 
+#featured-comment {
+    margin-top: 15px;
+}
+
+#featured-comment .title-wrapper {
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    font-weight: bold;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+#featured-comment .block-title {
+    margin: 0;
+    font-weight: bold;
+    padding: 4px 0 0 5px;
+}
+
+#featured-comment .comment-button {
+    padding: 3px 0 0 0;
+}
+
+#featured-comment .author-info {
+    width: 120px;
+    margin-bottom: 0;
+}
+
+#featured-comment .comment-content {
+    margin-left: 120px;
+    font-size: 18px;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+#featured-comment .personelScore {
+    float: left;
+    margin: 0;
+}
+
+#featured-comment .showcommentsbtn {
+    float: right;
+    color: #333;
+    font-weight: bold;
+}
+
+.sprite .write-comment {
+    background-position: -1257px -123px;
+    width: 25px;
+    height: 25px;
+    margin: -3px 0 0 0;
+    float: left;
+}
+
+.sprite.featured-comment {
+    background-position: -1257px -91px;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: 5px;
+
+}
+
+.fix-height {
+    min-height: 572px !important;
+}
+
 @media only screen and (max-width: 1199px) {
     .limited-offers {
         text-align: center;
