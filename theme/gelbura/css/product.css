@@ -619,17 +619,22 @@
     margin: 0 0 10px 0;
     padding: 0 0 10px 0;
     font-weight: bold;
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid #D9D9D9;
 }
 
 #featured-comment .block-title {
     margin: 0;
-    font-weight: bold;
-    padding: 4px 0 0 5px;
+    font-weight: 500;
+    float: left;
+    line-height: 25px;
 }
 
 #featured-comment .comment-button {
     padding: 3px 0 0 0;
+    float: right;
+    position: relative;
+    font-weight: 500;
+    color: #000;
 }
 
 #featured-comment .author-info {
@@ -639,7 +644,7 @@
 
 #featured-comment .comment-content {
     margin-left: 120px;
-    font-size: 18px;
+    font-size: 15px;
     max-height: 80px;
     overflow: hidden;
 }
@@ -655,7 +660,7 @@
     font-weight: bold;
 }
 
-.sprite .write-comment {
+.sprite.write-comment {
     background-position: -1257px -123px;
     width: 25px;
     height: 25px;
