@@ -1,0 +1,53 @@
+<?
+/**
+ * @var int             $id
+ * @var string          $title
+ * @var \product_item[] $products
+ */
+view::requireAsset('countdown');
+?>
+<div id="gunun-firsati" class="<?= $id ?> items-wrapper">
+    <div class="block">
+        <h3 class="block-title"><?= $title ?></h3>
+        <ul class="owl-carousel items">
+            <? foreach ($products as $key => $product) { ?>
+                <li class="item">
+                    <?= $product->generate() ?>
+                </li>
+            <? } ?>
+        </ul>
+        <div class="firsat-time">
+            <span class="sprite time"></span>
+            <div class="text"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.<?=$id?> .items')
+            .on('initialized.owl.carousel', function () {
+                $(this).find('.item').show();
+            })
+            .owlCarousel({
+                nav: true,
+                navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                    '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'],
+                responsiveClass: true,
+                responsiveBaseElement: ".<?= $id ?>",
+                responsive: {
+                    0: {items: 1}
+                },
+                margin: 30,
+                slideSpeed: 300,
+                paginationSpeed: 400
+            });
+        $('.<?= $id ?> .firsat-time .text').countdown('<?=date('Y/m/d H:i:s', strtotime((date('H') < 9 ? 'today' : 'tomorrow') . '09:00')) ?>')
+            .on('update.countdown', function (event) {
+                $(this).html(event.strftime('Kalan Süre: <span>%H:%M:%S</span>'));
+            })
+            .on('finish.countdown', function (event) {
+                $(this).html('Bu teklif sona erdi!')
+                    .parents('gunun-firsati').addClass('disabled');
+            });
+    });
+</script>

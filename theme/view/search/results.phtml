@@ -10,6 +10,7 @@
  * @var int          $numFound
  * @var ob_product[] $products
  * @var string       $paginationUrl
+ * @var string       $paginationWidgetHtml
  * @var int          $totalPage
  * @var int          $currentPage
  * @var string       $qs
@@ -46,7 +47,7 @@
     </div>
     <div class="col-md-9 mb30">
         <? if (!isset($qs) && isset($category)) { ?>
-            <?= \TeknoETicaret\Widget\Block::addBlock('categoryProductTop', ['categoryId' => $category->category_id]) ?>
+            <?= \TeknoETicaret\Widget\Block::addBlock('CategoryOverProduct', ['categoryId' => $category->category_id]) ?>
         <? } ?>
         <a id="filtreler-btn" href="#filter-wrapper">Filtrele</a>
         <? if (!isset($hideListTitle) || !$hideListTitle) { ?>
@@ -76,7 +77,8 @@
                         <? foreach ($products as $key => $product) { ?>
                             <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
                                 <a href="<?= $product->getUrl() ?>">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image lazyload" alt="<?= $product->full_name ?>"
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image lazyload"
+                                            alt=<?= str_replace('"', '&quot;', $product->full_name) ?>
                                             data-src="<?= $product->getPhoto("dynamic") ?>" data-sizes="auto" data-widths="[182,190,320,380,520,720]"/>
                                     <div class="itemInfo">
                                         <h5 class="name"><?= $product->full_name ?></h5>
@@ -142,7 +144,7 @@
         </div>
         <? if (isset($paginationUrl) && $paginationUrl && $totalPage > 1) { ?>
             <nav class="pagination-wrapper text-center mb30">
-                <?= pagination::renderPagination($currentPage, $totalPage, $paginationUrl) ?>
+                <?= $paginationWidgetHtml ?>
             </nav>
         <? } ?>
         <? if (!isset($qs) && isset($category)) { ?>

@@ -4,7 +4,7 @@
 }
 
 #gunun-firsati .image {
-    width: 156px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -19,7 +19,7 @@
 }
 
 #gunun-firsati .firsat-time span {
-    font-size: 12px;
+    font-weight: bold;
 }
 
 #gunun-firsati .text {
@@ -158,7 +158,7 @@
 }
 
 .home-block-outdoor .category-image {
-    background: #f4993f;
+    background: #F4993F;
 }
 
 .home-block-outdoor .image-container {

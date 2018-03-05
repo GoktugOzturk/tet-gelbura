@@ -22,10 +22,9 @@
             <div class="block ptb15">
                 Sepet Toplamınız : <strong><?= icms::format_money(session::getCartTotalPrice()) ?></strong> <br>
                 <span>Sepetinizde toplam <strong><?= session::getCartProductCount() ?></strong> ürün var.</span>
-                <div class="addedButtons mt15"><a class="btn btn-default btn-sm" href="/">Alışverişe Devam
-                        Et</a>
-                    <a class="btn btn-primary btn-orange btn-sm" href="/cart">Sepete Git <i
-                                class="glyphicon glyphicon-chevron-right"></i></a>
+                <div class="addedButtons mt15">
+                    <a class="btn btn-default btn-sm" onclick="window.history.go(-2);">Alışverişe Devam Et</a>
+                    <a class="btn btn-primary btn-orange btn-sm" href="/cart">Sepete Git <i class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
         </div>
