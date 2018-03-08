@@ -1,3 +1,6 @@
+#gunun-firsati {
+    margin-bottom: 20px;
+}
 
 #gunun-firsati.items-wrapper .block {
     border: 2px solid #EE6A05;
@@ -36,6 +39,8 @@
 
 #gunun-firsati .discount-percent {
     top: 15px;
+    left: 8px;
+    transform: scale(1.3);
 }
 
 #gunun-firsati .badge.free-cargo {
@@ -50,6 +55,11 @@
 #gunun-firsati .price,
 #gunun-firsati .star {
     text-align: right;
+}
+
+#gunun-firsati .rating .stars {
+    display: inline-block;
+    float: right;
 }
 
 .banner {

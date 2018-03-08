@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var array $breadcrumbs
+ */
+?>
+<? if (count($breadcrumbs)) { ?>
+    <div class="breadcrumbs">
+        <? foreach ($breadcrumbs as $key => $breadcrumb) { ?>
+            <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="<?= $breadcrumb['link'] ?>" itemprop="url"><span
+                            itemprop="title"><?= $breadcrumb['title'] ?></span></a></div>
+        <? } ?>
+    </div>
+<? } ?>
