@@ -85,14 +85,14 @@ $coupon = $cart->getCoupon();
                             </td>
                             <td class="cart-unit text-center">
                                 <div class="product-piece">
-                                    <a onclick="quantity('#qty-<?= $obProduct->product_id ?>','down')" href="javascript:;">-</a>
+                                    <a onclick="changeQuantity('#qty-<?= $obProduct->product_id ?>','down')" href="javascript:">-</a>
                                     <div>
                                         <input type="text" id="qty-<?= $obProduct->product_id ?>" data-ref="update<?= $obProduct->product_id ?>" title="Ürün Adedi"
                                                 name="quantity[<?= $obProduct->product_id ?>]" class="form-control input-xs quantity_input text-center" min="0"
-                                                max="<?= $obProduct->saleableProductCount() ?>" value="<?= $product->getQuantity() ?>" onblur="quantity($(this))">
+                                                max="<?= $obProduct->saleableProductCount() ?>" value="<?= $product->getQuantity() ?>" onblur="changeQuantity($(this))">
                                         <label for="productQuantity">ADET</label>
                                     </div>
-                                    <a onclick="quantity('#qty-<?= $obProduct->product_id ?>','up')" href="javascript:;">+</a>
+                                    <a onclick="changeQuantity('#qty-<?= $obProduct->product_id ?>','up')" href="javascript:">+</a>
                                 </div>
                                 <a href="/cart/remove/<?= $obProduct->product_id ?>" onclick="return confirm('Bu ürünü sepetinizden çıkarmak istediğinize emin misiniz?');"
                                         class="remove-icon"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></a>
@@ -260,7 +260,7 @@ $coupon = $cart->getCoupon();
                 if (!data) {
                     return alert('Kupon kodu kullanılırken hata oluştu');
                 }
-                if (data.Status && data.Status == 'OK') {
+                if (data.Status && data.Status === 'OK') {
                     window.location = '/cart';
                     return true;
                 }
@@ -279,7 +279,7 @@ $coupon = $cart->getCoupon();
             url: "/cart/useShoppingCheck",
             data: "shopping_check=" + check
         }).done(function (data) {
-            if (data == "OK") {
+            if (data === "OK") {
                 window.location = '/cart';
             } else {
                 alert(data);

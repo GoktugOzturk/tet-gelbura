@@ -32,7 +32,7 @@ a:hover {
     float: right;
 }
 
-#user-menu li a {
+#user-menu > ul > li > a {
     font-size: 12px;
     font-weight: 600;
     line-height: 35px;
@@ -1192,15 +1192,15 @@ a {
 }
 
 .uye-avantajlari-altbaslik {
-    background: #dbdbdb;
+    background: #DBDBDB;
     font-size: 16px;
-    color: #5e5e5e;
+    color: #5E5E5E;
     text-align: center;
-    border-right-color: #c3c3c3;
+    border-right-color: #C3C3C3;
 }
 
 .uye-avantajlari-altbaslik2 {
-    background: #dbdbdb;
+    background: #DBDBDB;
     font-size: 16px;
     color: #000;
     text-align: center;
@@ -1211,15 +1211,15 @@ a {
 }
 
 .btn-dark-grey {
-    background: #6f6f6f;
+    background: #6F6F6F;
     color: #FFF;
 }
 
 .btn-grd-green {
-    background: #37a11d; /* Old browsers */
-    background: -moz-linear-gradient(top, #37a11d 0%, #318c1b 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #37a11d 0%, #318c1b 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #37a11d 0%, #318c1b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: #37A11D; /* Old browsers */
+    background: -moz-linear-gradient(top, #37A11D 0%, #318C1B 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #37A11D 0%, #318C1B 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #37A11D 0%, #318C1B 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#37a11d', endColorstr='#318c1b', GradientType=0); /* IE6-9 */
     color: #FFF;
 }

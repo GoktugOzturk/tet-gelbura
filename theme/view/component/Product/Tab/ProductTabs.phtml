@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var \TeknoETicaret\Product\Tab\TabInterface[] $tabs
+ */
+?>
+<div class="productTabs">
+    <div class="block">
+        <!-- Nav tabs -->
+        <ul id="productDetNav" class="nav nav-tabs" role="tablist">
+            <?
+            foreach ($tabs as $tab) {
+                echo '<li>' . $tab->renderLink() . '</li>';
+            }
+            ?>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <?
+            foreach ($tabs as $tab) {
+                echo '<div class="tab-pane fade mt" role="tabpanel" id="' . $tab->getTabId() . '">' . $tab->renderContent() . '</div>';
+            }
+            ?>
+        </div>
+        <script>
+            $(function () {
+                $("#productDetNav").find("a").each(function () {
+                    $(this).prepend($('<span class="sprite sprite-details"></span>'));
+                });
+            });
+        </script>
+    </div>
+</div>

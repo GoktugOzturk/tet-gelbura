@@ -1,0 +1,54 @@
+<?php
+/**
+ * @var stdClass   $reviewData
+ * @var ob_product $obProduct
+ */
+?>
+<div class="row productAddReview">
+    <? if ($reviewData->myCommentWaiting) { ?>
+        <div class="col-xs-12">
+            <h4>YORUMUNUZ ONAY BEKLİYOR</h4>
+            <span class="commentWaiting">Bu ürüne yazdığınız yorum onay bekliyor. Anlayışınız için teşekkür ederiz.</span>
+        </div>
+    <? } elseif (session::memberId()) { ?>
+        <div class="col-xs-6">
+            <h4>YORUMUNUZU YAZIN</h4>
+            <form role="form" action="/product/add_comment" method="POST" onsubmit="return checkCommentForm(this)" id="frmComment">
+                <div class="form-group">
+                    <label for="comments">Ürün Değerlendirmeniz</label>
+                    <div class="personelScore clearfix">
+                        <div class="rating">
+                            <div id="commentStar" class="pull-left"></div>
+                            <span id="ratingHint"></span>
+                        </div>
+                        <script>
+                            $(function () {
+                                $('#commentStar').raty({
+                                    click: function (score) {
+                                        $('input[name=comment_rating]').val(score);
+                                    },
+                                    target: '#ratingHint',
+                                    targetKeep: true
+                                });
+                            });
+                        </script>
+                        <input type="hidden" name="comment_rating" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment_title">Yorum Başlığı</label> <input type="text" id="comment_title" name="comment_title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="comment_text">Yorumunuz</label> <textarea id="comment_text" name="comment_text" class="form-control" rows="10"></textarea>
+                </div>
+                <input type="hidden" name="product" value="<?= $obProduct->product_id ?>"/>
+                <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
+                <button type="submit" class="btn btn-warning btn-orange mb">Yorumu Gönder</button>
+            </form>
+        </div>
+    <? } else { ?>
+        <div class="col-xs-12 text-center">
+            <a href="<?= $obProduct->getUrl() . "#tabComments" ?>" class="btn btn-primary btn-orange mt mb login-required">Yorum yapabilmek için oturum açın</a>
+        </div>
+    <? } ?>
+</div>
